@@ -13,10 +13,12 @@ namespace BusTicketingWebApplication.Controllers
     public class BusRouteController : ControllerBase
     {
         private readonly IBusRouteService _busRouteService;
+        private readonly ILogger<BusRouteController> _logger;
 
-        public BusRouteController(IBusRouteService busRouteService)
+        public BusRouteController(IBusRouteService busRouteService, ILogger<BusRouteController> logger)
         {
             _busRouteService = busRouteService;
+            _logger = logger;
         }
         [Authorize]
         [HttpGet]
@@ -26,11 +28,14 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busRouteService.GetRoutes();
+                _logger.LogInformation("BUs Routes listed");
                 return Ok(result);
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("No Such Bus Routes are present in the collection or in the table");
             }
             return BadRequest(errorMessage);
         }
@@ -44,6 +49,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busRouteService.Add(busRoute);
+                _logger.LogInformation("Bus Routes are Added++!!");
                 return Ok(result);
             }
             catch (Exception e)
@@ -53,21 +59,6 @@ namespace BusTicketingWebApplication.Controllers
             return BadRequest(errorMessage);
         }
 
-        //[authorize]
-        //[httpget]
-        //public actionresult getallroutes()
-        //{
-        //    string errormessage = string.empty;
-        //    try
-        //    {
-        //        var result = _busrouteservice.getroutes();
-        //        return ok(result);
-        //    }
-        //    catch (exception e)
-        //    {
-        //        errormessage = e.message;
-        //    }
-        //    return badrequest(errormessage);
-        //}
+        
     }
 }

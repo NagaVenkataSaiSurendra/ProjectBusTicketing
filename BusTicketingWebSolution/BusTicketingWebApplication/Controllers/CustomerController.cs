@@ -14,10 +14,12 @@ namespace BusTicketingWebApplication.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogger<CustomerController> _logger;
 
-        public CustomerController(IUserService userService)
+        public CustomerController(IUserService userService, ILogger<CustomerController> logger)
         {
             _userService = userService;
+            _logger = logger;
         }
         [HttpPost]
         public ActionResult Register(UserDTO viewModel)
@@ -29,6 +31,7 @@ namespace BusTicketingWebApplication.Controllers
                 if (user != null)
                 {
                     return Ok(user);
+                    _logger.LogInformation("Customer is Registered!!");
                 }
             }
             catch (DbUpdateException exp)
@@ -52,6 +55,7 @@ namespace BusTicketingWebApplication.Controllers
             if (result != null)
             {
                 return Ok(result);
+                _logger.LogInformation("Customers are Logged In!!");
             }
             return Unauthorized("Invalid username or password");
         }
@@ -64,7 +68,9 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _userService.BusSearch(busDTO);
+                _logger.LogInformation("Bus Search is listed!!");
                 return Ok(result);
+                
             }
             catch (Exception e)
             {
@@ -81,6 +87,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _userService.GetBookingHistory(userIdDTO);
+                _logger.LogInformation("User Booking History is Fetched!!");
                 return Ok(result);
             }
             catch (Exception e)
@@ -101,23 +108,26 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _userService.GetAllUsers();
+                _logger.LogInformation("Users listed");
                 return Ok(result);
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("No Such Users are present in the collection or in the table");
             }
             return BadRequest(errorMessage);
 
         }
         [HttpPut]
         [Route("UserProfiles")]
-        public ActionResult UserProfiles(UserDTO userDTO)
+        public ActionResult UserProfiles(UserDataDTO userDataDTO)
         {
             string msg = "";
             try
             {
-                var res = _userService.UpdateUser(userDTO);
+                var res = _userService.UpdateUser(userDataDTO);
+                _logger.LogInformation("Users profiles are listed!!");
                 return Ok(res);
             }
             catch(Exception e)

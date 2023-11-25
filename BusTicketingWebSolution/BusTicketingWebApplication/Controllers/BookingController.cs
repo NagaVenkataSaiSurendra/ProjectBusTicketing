@@ -13,13 +13,15 @@ namespace BusTicketingWebApplication.Controllers
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
+        private readonly ILogger<BookingController> _logger;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, ILogger<BookingController> logger)
         {
             _bookingService = bookingService;
+            _logger = logger;
         }
 
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(BookingDTO bookingDTO)
         {
@@ -27,6 +29,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _bookingService.Add(bookingDTO);
+                _logger.LogInformation("Bookings are Added!!");
                 return Ok(result);
             }
             catch (Exception e)
@@ -44,11 +47,14 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _bookingService.GetBookings();
+                _logger.LogInformation("Bookings listed");
                 return Ok(result);
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("No Such Bookings are present in the collection or in the table");
             }
             return BadRequest(errorMessage);
         }
@@ -62,6 +68,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _bookingService.RemoveBooking(bookingDTO);
+                _logger.LogInformation("Bookings are Deleted!!");
                 return Ok(result);
             }
             catch (Exception e)

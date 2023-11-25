@@ -17,24 +17,28 @@ namespace BusTicketingWebApplication.Controllers
     public class BusController : ControllerBase
     {
         private readonly IBusService _busService;
+        private readonly ILogger<BusController> _logger;
 
-        public BusController(IBusService busService)
+        public BusController(IBusService busService, ILogger<BusController> logger)
         {
             _busService = busService;
+            _logger = logger;
         }
-      //[Authorize]
-      [HttpGet]
+        //[Authorize]
+        [HttpGet]
         public ActionResult GetAllBusses()
         {
             string errorMessage = string.Empty;
             try
             {
                 var result = _busService.GetBuses();
+                _logger.LogInformation("Buses listed");
                 return Ok(result);
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("No Such Buses are present in the collection or in the table");
             }
             return BadRequest(errorMessage);
         }
@@ -46,6 +50,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busService.Add(bus);
+                _logger.LogInformation("Buses are Added!!");
                 return Ok(result);
             }
             catch (Exception e)
@@ -65,6 +70,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busService.RemoveBus(busIdDTO);
+                _logger.LogInformation("Bus is Deleted!!");
                 return Ok(result);
             }
             catch (Exception e)
@@ -83,6 +89,7 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busService.UpdateBus( busDTO);
+                _logger.LogInformation("Bus is Updated!!");
                 return Ok(result);
             }
             catch (Exception e)
