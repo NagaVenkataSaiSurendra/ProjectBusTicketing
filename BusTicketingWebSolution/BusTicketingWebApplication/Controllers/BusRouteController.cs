@@ -35,7 +35,7 @@ namespace BusTicketingWebApplication.Controllers
             {
                 errorMessage = e.Message;
 
-                _logger.LogError("No Such Bus Routes are present in the collection or in the table");
+                _logger.LogError("No Such Bus Routes are present in the collection");
             }
             return BadRequest(errorMessage);
         }
@@ -49,12 +49,14 @@ namespace BusTicketingWebApplication.Controllers
             try
             {
                 var result = _busRouteService.Add(busRoute);
-                _logger.LogInformation("Bus Routes are Added++!!");
+                _logger.LogInformation("Bus Routes are Added!!");
                 return Ok(result);
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("Bus Route is not added!!");
             }
             return BadRequest(errorMessage);
         }

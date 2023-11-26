@@ -37,6 +37,7 @@ namespace BusTicketingWebApplication.Controllers
             catch (DbUpdateException exp)
             {
                 message = "Duplicate username";
+                _logger.LogError("User is not Registered!!");
             }
             catch (Exception)
             {
@@ -75,6 +76,7 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("Bus Search is not Listed!!");
             }
             return BadRequest(errorMessage);
 
@@ -93,6 +95,8 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("User Booking History is not Fetched!!");
             }
             return BadRequest(errorMessage);
 
@@ -133,6 +137,7 @@ namespace BusTicketingWebApplication.Controllers
             catch(Exception e)
             {
                 msg=e.Message;
+                _logger.LogError("No User Profile found!!");
             }
             return BadRequest(msg);
         }

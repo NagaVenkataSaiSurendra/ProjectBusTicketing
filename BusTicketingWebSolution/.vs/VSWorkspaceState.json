@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\BusTicketingWebApplication",
+    "\\BusTicketingWebApplication\\Controllers",
     "\\BusTicketingWebApplication\\Models",
     "\\BusTicketingWebApplication\\Models\\DTOs",
     "\\BusTicketingWebApplication\\Services"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\Models\\DTOs\\BusDTO.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\Controllers\\BusRouteController.cs",
   "PreviewInSolutionExplorer": false
 }

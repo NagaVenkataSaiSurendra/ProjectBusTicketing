@@ -56,6 +56,7 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("Bus is not Added!!");
             }
             return BadRequest(errorMessage);
         }
@@ -76,6 +77,7 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("Bus is not Deleted!!");
             }
             return BadRequest(errorMessage);
         }
@@ -95,6 +97,7 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+                _logger.LogError("Bus is not Updated!!");
             }
             return BadRequest(errorMessage);
         }

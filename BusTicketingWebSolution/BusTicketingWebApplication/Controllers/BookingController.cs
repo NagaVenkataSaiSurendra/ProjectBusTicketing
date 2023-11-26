@@ -35,6 +35,8 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("Booking is not Added!!");
             }
             return BadRequest(errorMessage);
         }
@@ -74,6 +76,8 @@ namespace BusTicketingWebApplication.Controllers
             catch (Exception e)
             {
                 errorMessage = e.Message;
+
+                _logger.LogError("Booking cannot be Deleted!!");
             }
             return BadRequest(errorMessage);
         }
