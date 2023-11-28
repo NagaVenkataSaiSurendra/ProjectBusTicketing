@@ -89,7 +89,7 @@ namespace BusTicketingWebApplication
             builder.Services.AddScoped<IBookingService, BookingService>();
             builder.Services.AddScoped<IBusRouteService, BusRouteService>();
 
-            builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+           //builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
             var app = builder.Build();
 

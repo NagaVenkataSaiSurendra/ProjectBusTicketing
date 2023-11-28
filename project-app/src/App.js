@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-import AddBus from './Components/AddBus';
-import Buses from './Components/Buses';
-import RegisterUser from './Components/RegisterUser';
-import UserLogin from './Components/UserLogin';
-
+import Seat from './Components/Seat'
+import BusListing from './Components/BusListing';
 
 function App() {
-  return (
-     <div className="container text-center">
-  <div className="row">
-    <div className="col">
-      <RegisterUser/> 
-    </div>
-    <div className="col">
-      <UserLogin/>
-    </div>
-  </div>
+  var buses =[
+    {
+       "id":101,
+       "type":"A/c",
+       "seatNo":10,
+       "cost":500
+   },
+   {
+      "id":102,
+      "type":"Non-A/c",
+      "seatNo":2,
+      "cost":800
+   },
+   {
+      "id":103,
+      "type":"Super-Deluxe",
+      "seatNo":8,
+      "cost":700
+   }
+]
+var [seat,setSeat]=useState([]);
+var bookSeat=(bNo)=>{
+  setSeat([...seat,bNo])
+  console.log(seat)
   
-</div>
+}
+
+  return (
+    <div>
+    <div className="container">
+        <div className="row">
+          <div class="col">
+           <BusListing buses={buses} onAddClick={bookSeat}/>
+          </div>
+          <div className="col">
+           <Seat bookSeat={seat} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
