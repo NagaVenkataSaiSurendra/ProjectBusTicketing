@@ -2,6 +2,13 @@ import { useState } from 'react';
 import './App.css';
 import Seat from './Components/Seat'
 import BusListing from './Components/BusListing';
+import Menu from './Components/Menu';
+import RegisterUser from './Components/RegisterUser';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DisplaySeat from './Components/DisplaySeat';
+import Products from './Components/Buses';
+import Protected from './Protected';
+
 
 function App() {
   var buses =[
@@ -31,18 +38,25 @@ var bookSeat=(bNo)=>{
   
 }
 
+var [IsLoggedIn,setLoggedIn]=useState(false);
+var changeState=()=>{
+  var token = localStorage.getItem("token");
+  if(token){
+    setLoggedIn(true);
+  }
+}
+
   return (
     <div>
-    <div className="container">
-        <div className="row">
-          <div class="col">
-           <BusListing buses={buses} onAddClick={bookSeat}/>
-          </div>
-          <div className="col">
-           <Seat bookSeat={seat} />
-          </div>
-        </div>
-      </div>
+      <BrowserRouter>
+        <Menu/>
+        <Routes>
+          <Route path='/' element={<RegisterUser/>}/>
+          <Route path="buses" element={<BusListing buses={buses}/>}/>
+          
+          <Route path="seat" element={<Seat/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -4,6 +4,7 @@ using BusTicketingWebApplication.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusTicketingWebApplication.Migrations
 {
     [DbContext(typeof(TicketingContext))]
-    partial class TicketingContextModelSnapshot : ModelSnapshot
+    [Migration("20231128180552_project")]
+    partial class project
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,9 +92,8 @@ namespace BusTicketingWebApplication.Migrations
                     b.Property<string>("Date")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SelectedSeats")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NoOfSeats")
+                        .HasColumnType("int");
 
                     b.Property<float>("TotalFare")
                         .HasColumnType("real");

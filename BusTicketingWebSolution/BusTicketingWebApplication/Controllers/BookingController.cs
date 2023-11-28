@@ -14,11 +14,13 @@ namespace BusTicketingWebApplication.Controllers
     {
         private readonly IBookingService _bookingService;
         private readonly ILogger<BookingController> _logger;
+        private readonly IBookedSeatService _bookedSeatService;
 
-        public BookingController(IBookingService bookingService, ILogger<BookingController> logger)
+        public BookingController(IBookingService bookingService, ILogger<BookingController> logger,IBookedSeatService bookedSeatService)
         {
             _bookingService = bookingService;
             _logger = logger;
+            _bookedSeatService= bookedSeatService;
         }
 
         // [Authorize(Roles = "Admin")]
@@ -78,6 +80,26 @@ namespace BusTicketingWebApplication.Controllers
                 errorMessage = e.Message;
 
                 _logger.LogError("Booking cannot be Deleted!!");
+            }
+            return BadRequest(errorMessage);
+        }
+        [HttpPost]
+        [Route("BookedSeatsList")]
+        public ActionResult BookedSeatsList(BusIdDTO busIdDTO)
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _bookedSeatService.GetSeatsById(busIdDTO);
+                _logger.LogInformation("Booking done");
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+                _logger.LogError("Booking not done");
+
             }
             return BadRequest(errorMessage);
         }

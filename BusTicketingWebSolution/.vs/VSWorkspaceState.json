@@ -7,6 +7,6 @@
     "\\BusTicketingWebApplication\\Models\\DTOs",
     "\\BusTicketingWebApplication\\Services"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\MailData.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

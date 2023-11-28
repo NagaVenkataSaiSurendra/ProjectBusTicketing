@@ -6,10 +6,7 @@ function RegisterUser(){
     const roles =["User","Admin"];
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-    const [email,setEmail] = useState("");
-    const [phone,setPhone] = useState("");
-    const [city,setCity] = useState("");
-    const [pincode,setPincode] = useState();
+    const [repassword,setrePassword] = useState("");
     const [role,setRole] = useState("");
     var [usernameError,setUsernameError]=useState("");
     var checkUSerData = ()=>{
@@ -34,17 +31,15 @@ function RegisterUser(){
             return;
         }
         
-        axios.post("http://localhost:5041/api/customer",{
+        axios.post("http://localhost:5041/api/Customer/Login",{
             username: username,
             role:	role,
-            password:password,
-            email:email,
-            phone:phone,
-            city:city,
-            pincode:pincode
+            password:password
     })
         .then((userData)=>{
-            console.log(userData)
+            var token = userData.data.token;
+            localStorage.setItem("token",token);
+
         })
         .catch((err)=>{
             console.log(err)
@@ -53,25 +48,16 @@ function RegisterUser(){
     
     return(
         <form className="registerForm">
-            <label className="form-control button">Username</label>
-            <input type="text" className="form-control button" value={username}
+            <label className="form-control">Username</label>
+            <input type="text" className="form-control" value={username}
                     onChange={(e)=>{setUsername(e.target.value)}}/>
-           <label >{usernameError}</label>
+           <label className="alert alert-danger">{usernameError}</label>
             <label className="form-control">Password</label>
             <input type="password" className="form-control" value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}/>
-            <label className="form-control">Email</label>
-            <input type="email" className="form-control" value={email}
-                    onChange={(e)=>{setEmail(e.target.value)}}/>
-            <label className="form-control">Phone Number</label>
-            <input type="text" className="form-control" value={phone}
-                    onChange={(e)=>{setPhone(e.target.value)}}/>
-            <label className="form-control">City</label>
-            <input type="text" className="form-control" value={city}
-                    onChange={(e)=>{setCity(e.target.value)}}/>
-            <label className="form-control">Pincode</label>
-            <input type="text" className="form-control" value={pincode}
-                    onChange={(e)=>{setPincode(e.target.value)}}/>
+            <label className="form-control">Re-Type Password</label>
+            <input type="text" className="form-control" value={repassword}
+                    onChange={(e)=>{setrePassword(e.target.value)}}/>
             <label className="form-control">Role</label>
             <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
                 <option value="select">Select Role</option>
@@ -88,3 +74,4 @@ function RegisterUser(){
 }
 
 export default RegisterUser;
+         
