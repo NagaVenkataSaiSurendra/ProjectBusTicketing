@@ -3,6 +3,7 @@ using BusTicketingWebApplication.Interfaces;
 using BusTicketingWebApplication.Models;
 using BusTicketingWebApplication.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace BusTicketingWebApplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class BusRouteController : ControllerBase
     {
         private readonly IBusRouteService _busRouteService;

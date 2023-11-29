@@ -27,7 +27,7 @@ function RegisterUser(){
         var checkData = checkUSerData();
         if(checkData==false)
         {
-            alert('please check yor data')
+            alert('please check your data')
             return;
         }
         

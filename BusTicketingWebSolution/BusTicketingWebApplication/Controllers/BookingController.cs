@@ -4,12 +4,14 @@ using BusTicketingWebApplication.Models;
 using BusTicketingWebApplication.Models.DTOs;
 using BusTicketingWebApplication.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusTicketingWebApplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
