@@ -3,10 +3,11 @@
     "",
     "\\BusTicketingWebApplication",
     "\\BusTicketingWebApplication\\Controllers",
+    "\\BusTicketingWebApplication\\Interfaces",
     "\\BusTicketingWebApplication\\Models",
     "\\BusTicketingWebApplication\\Models\\DTOs",
     "\\BusTicketingWebApplication\\Services"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\Services\\UserService.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\Controllers\\CustomerController.cs",
   "PreviewInSolutionExplorer": false
 }

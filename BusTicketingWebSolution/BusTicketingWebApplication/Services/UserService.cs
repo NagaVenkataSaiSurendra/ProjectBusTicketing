@@ -68,9 +68,7 @@ namespace BusTicketingWebApplication.Services
         public UserDataDTO UpdateUser(UserDataDTO userDataDTO)
         {
             var userData=_userrepository.GetById(userDataDTO.UserName);
-            userData.UserName = userDataDTO.UserName;
-           
-            userData.Role = userDataDTO.Role;
+        
             userData.Email = userDataDTO.Email;
             userData.City = userDataDTO.City;
             userData.Phone = userDataDTO.Phone;

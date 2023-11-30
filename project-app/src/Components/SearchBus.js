@@ -112,7 +112,7 @@ function SearchBus() {
               </tr>
             </thead>
             <tbody>
-              {searchResults.map((bus, index) => (
+              {searchResults.map((bus,index) => (
                 <tr key={bus.busId}>
                   <td>{index + 1}</td>
                   <td>{bus.id}</td>

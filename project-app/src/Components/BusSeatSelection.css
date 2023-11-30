@@ -3,6 +3,7 @@
     padding: 20px;
     margin: 20px;
     border-radius: 8px;
+    background-color: azure;
   }
   .booked {
     background-color: red;

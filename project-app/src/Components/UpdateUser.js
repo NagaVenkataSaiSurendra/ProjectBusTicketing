@@ -1,85 +1,120 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import './RegisterUser.css';
 
 function UpdateUser() {
-    //const [userId, setUserId] = useState(''); // Assuming you have a userId
-    const roles=["user" ,"Admin"];
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [city, setCity] = useState('');
-    const [pincode, setPincode] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [city, setCity] = useState('');
+  const [pincode, setPincode] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [startError, setStartError] = useState('');
+  const [searchError, setSearchError] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
-    const updateUser = async () => {
-        try {
-            const response = await fetch(`http://localhost:5041/api/Customer/UserProfiles/${userName}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userName: userName,
-                    role: role,
-                    password: password,
-                    email: email,
-                    phone: phone,
-                    city: city,
-                    pincode: pincode,
-                }),
-            });
+  const checkUpdateUser = () => {
+    if (userName === '') {
+      setStartError('User name cannot be empty');
+      return false;
+    }
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorData.message || 'Unknown error'}`);
-            }
+    return true;
+  };
 
-            // Handle success if needed
-            console.log('Update successful');
-        } catch (error) {
-            console.error('Fetch error:', error.message);
-            setErrorMessage(`Error updating user details. ${error.message}`);
-        }
-    };
-    return (
-        <form className="registerForm">
-             <label className="form-control">Username</label>
-            <input type="text" className="form-control" value={userName}
-                    onChange={(e)=>{setUserName(e.target.value)}}/>
-           
-            <label className="form-control">Password</label>
-            <input type="password" className="form-control" value={password}
-                    onChange={(e)=>{setPassword(e.target.value)}}/>
-            <label className="form-control">Email</label>
-            <input type="text" className="form-control" value={email}
-                    onChange={(e)=>{setEmail(e.target.value)}}/>
-             <label className="form-control">Phone Number</label>
-            <input type="text" className="form-control" value={phone}
-                    onChange={(e)=>{setPhone(e.target.value)}}/>
-              <label className="form-control">City</label>
-             <input type="text" className="form-control" value={city}
-                            onChange={(e)=>{setCity(e.target.value)}}/>
-            <label className="form-control">Pincode</label>
-            <input type="text" className="form-control" value={pincode}
-                    onChange={(e)=>{setPincode(e.target.value)}}/>
-            <label className="form-control">Role</label>
-             <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
-                <option value="select">Select Role</option>
-                {roles.map((r)=>
-                    <option value={r} key={r}>{r}</option>
-                )}
-            </select>
-           
-            <br/>
-            <button className="btn btn-primary button" onClick={updateUser}>
-                Update Details
-            </button>
-            <button className="btn btn-danger button" onClick={() => alert('Cancelled')}>
-                Cancel
-            </button>
-        </form>
-    );
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setStartError('');
+    setSearchError('');
+
+    const isValidData = checkUpdateUser();
+
+    if (!isValidData) {
+      setSearchError('Please check your data');
+      return;
+    }
+
+    axios
+      .put('http://localhost:5041/api/Customer/UserProfiles', {
+        userName: userName,
+        email: email,
+        phone: phone,
+        city: city,
+        pincode: pincode,
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("Updated Successfully!!");
+        setSearchResults(response.data);
+        setSearchPerformed(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setSearchError('Error updating the user details. Please try again.');
+      });
+  };
+
+  return (
+    <form className="registerForm">
+      <label className="form-control">Username</label>
+      <input
+        type="text"
+        className="form-control"
+        value={userName}
+        onChange={(e) => {
+          setUserName(e.target.value);
+        }}
+      />
+
+      <label className="form-control">Email</label>
+      <input
+        type="text"
+        className="form-control"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <label className="form-control">Phone Number</label>
+      <input
+        type="text"
+        className="form-control"
+        value={phone}
+        onChange={(e) => {
+          setPhone(e.target.value);
+        }}
+      />
+      <label className="form-control">City</label>
+      <input
+        type="text"
+        className="form-control"
+        value={city}
+        onChange={(e) => {
+          setCity(e.target.value);
+        }}
+      />
+      <label className="form-control">Pincode</label>
+      <input
+        type="text"
+        className="form-control"
+        value={pincode}
+        onChange={(e) => {
+          setPincode(e.target.value);
+        }}
+      />
+
+      <br />
+      {searchError && <p className="error-message">{searchError}</p>}
+
+      <button className="btn btn-primary button" onClick={handleSearch}>
+        Update Details
+      </button>
+      <button className="btn btn-danger button" onClick={() => alert('Cancelled')}>
+        Cancel
+      </button>
+    </form>
+  );
 }
 
 export default UpdateUser;

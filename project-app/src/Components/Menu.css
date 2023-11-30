@@ -1,0 +1,28 @@
+
+.container {
+ background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top of the container */
+}
+
+/* Add transparency to the navbar */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%; /* Make the navbar span the entire width of the container */
+}
+
+/* Make menu items transparent */
+.navbar-nav .nav-item .nav-link {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+
+/* Style for active menu item */
+.navbar-nav .nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.8);
+}
