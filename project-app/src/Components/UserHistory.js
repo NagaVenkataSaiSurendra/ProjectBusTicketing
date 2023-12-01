@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import './UserHistory.css';
 
 function UserHistory(){
     const [id,setId]=useState("");
@@ -45,7 +46,7 @@ function UserHistory(){
       };
       
       return(
-        <div>
+        <div className="history">
         <form>
         <label >UserId</label>
           <input

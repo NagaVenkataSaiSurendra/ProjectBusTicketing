@@ -13,6 +13,7 @@ import Buses from './Components/Buses';
 import Protected from './Protected';
 import UserHistory from './Components/UserHistory';
 import Users from './Components/Users';
+import BookingList from './Components/BookingList';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="UpdateUser" element={<UpdateUser/>}/>
           <Route path="UserHistory" element={<UserHistory/>}/>
           <Route path="Users" element={<Users/>}/>
+          <Route path="BookingList" element={<BookingList/>}/>
         </Routes>
       </BrowserRouter>  
       

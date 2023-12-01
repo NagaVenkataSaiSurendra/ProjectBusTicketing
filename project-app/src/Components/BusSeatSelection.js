@@ -19,7 +19,7 @@ const BusSeatSelection = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id: 1, // Replace with the actual bus ID you want to use
+        id: 2, // Replace with the actual bus ID you want to use
       }),
     })
       .then((response) => {
@@ -66,7 +66,7 @@ const handleBookClick = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      busId: 1, // Replace with the actual bus ID you want to use
+      busId: 2, // Replace with the actual bus ID you want to use
       userId: 1, // Replace with the actual user ID you want to use
       selectedSeats: selectedSeats,
       date: '2023-12-01', // Replace with the actual date you want to use

@@ -56,7 +56,7 @@ function UpdateUser() {
   };
 
   return (
-    <form className="registerForm">
+    <form className="update">
       <label className="form-control">Username</label>
       <input
         type="text"

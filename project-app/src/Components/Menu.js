@@ -30,6 +30,9 @@ function Menu(){
      <li className="nav-item">
       <Link className="nav-link" to="/Users">Users</Link>
      </li>
+     <li className="nav-item">
+      <Link className="nav-link" to="/BookingList">Bookings</Link>
+     </li>
 
     </ul>
   </div>
