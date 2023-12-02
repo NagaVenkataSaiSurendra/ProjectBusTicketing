@@ -64,7 +64,7 @@ namespace BusTicketingWebApplication.Services
                 }
                 Booking booking = new Booking
                 {
-                    UserId = bookingDTO.UserId,
+                    UserName = bookingDTO.UserName,
                     BusId = bookingDTO.BusId,
                     Date = bookingDTO.Date,
                     SelectedSeats = bookingDTO.SelectedSeats,

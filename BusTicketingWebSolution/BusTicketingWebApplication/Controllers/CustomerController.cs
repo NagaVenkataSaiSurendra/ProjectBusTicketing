@@ -83,7 +83,7 @@ namespace BusTicketingWebApplication.Controllers
         }
         [HttpPost]
         [Route("UserBookingHistory")]
-        public ActionResult BookingHistory(UserIdDTO userIdDTO)
+        public ActionResult BookingHistory(UserNameDTO userIdDTO)
         {
             string errorMessage = string.Empty;
             try

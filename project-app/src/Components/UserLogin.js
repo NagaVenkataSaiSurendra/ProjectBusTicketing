@@ -1,12 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import './UserLogin.css'
-
 function UserLogin(){
     const roles =["User","Admin"];
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const [role,setRole] = useState("");
+    const [thisUserName, setThisUserName] = useState(null);
+    const [thisToken, setThisToken] = useState(null);
     var [usernameError,setUsernameError]=useState("");
     var checkUSerData = ()=>{
         if(username=='')
@@ -29,13 +30,19 @@ function UserLogin(){
             alert('please check yor data')
             return;
         }
-        axios.post("http://localhost:5041/api/Customer/login",{
+        axios.post("http://localhost:5041/api/Customer/Login",{
             username: username,
             role:	role,
             password:password
     })
+    
     .then((userData)=>{
-        console.log(userData)
+        console.log(userData);
+        alert("Successfully Logged In!!")
+        localStorage.setItem('thisUserName', username);
+        //localStorage.setItem('thisToken',userData.data); have to work on this.
+        
+        
     })
     .catch((err)=>{
         console.log(err)
@@ -47,8 +54,8 @@ return(
             <label className="form-control">Username</label>
             <input type="text" className="form-control" value={username}
                     onChange={(e)=>{setUsername(e.target.value)}}/>
-            <label >{usernameError}</label>
-
+                <label>{usernameError}</label>
+                
             <label className="form-control">Password</label>
             <input type="password" className="form-control" value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}/>

@@ -3,15 +3,15 @@ import axios from "axios";
 import './UserHistory.css';
 
 function UserHistory(){
-    const [id,setId]=useState("");
-    const [idError, setIdError] = useState("");
+    const [userName,setUserName]=useState("");
+    const [userNameError, setUserNameError] = useState("");
     const [searchError,setSearchError]=useState("");
     const [searchResults,setSearchResults]=useState("");
     const [searchPerformed, setSearchPerformed] = useState(false);
 
     const userData=()=>{
-        if(id===""){
-        setIdError("Please enter your Id!!");
+        if(userName===""){
+        setUserNameError("Please enter your USerName!!");
         return false;
             
         }
@@ -19,7 +19,7 @@ function UserHistory(){
     }
     const handleSearch = (event) => {
         event.preventDefault();
-        setIdError("");
+        setUserNameError("");
         setSearchError("");
     
         const isValidData = userData();
@@ -31,7 +31,7 @@ function UserHistory(){
     
         axios
           .post("http://localhost:5041/api/Customer/UserBookingHistory", {
-            id:id,
+            userName:userName,
           })
           .then((response) => {
             console.log(response.data);
@@ -48,14 +48,14 @@ function UserHistory(){
       return(
         <div className="history">
         <form>
-        <label >UserId</label>
+        <label >UserName</label>
           <input
             type="text"
             className="form-control"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
           />
-           {idError && <p className="error-message">{idError}</p>}
+           {userNameError && <p className="error-message">{userNameError}</p>}
 
           <button className="btn btn-primary button" onClick={handleSearch}>
             History
@@ -69,7 +69,7 @@ function UserHistory(){
             <tr>
             <th>S.No</th>
               <th>BookingId</th>
-              <th>UserId</th>
+              <th>UserName</th>
               <th>BusId</th>
               <th>Date</th>
               <th>TotalCost</th>
@@ -78,10 +78,10 @@ function UserHistory(){
           </thead>
           <tbody>
           {searchResults.map((user, index) => (
-              <tr key={user.id}>
+              <tr key={user.userName}>
                 <td>{index + 1}</td>
                 <td>{user.bookingId}</td>
-                <td>{user.userId}</td>
+                <td>{user.userName}</td>
                 <td>{user.busId}</td>
                 <td>{user.date}</td>
                 <td>{user.totalFare}</td>

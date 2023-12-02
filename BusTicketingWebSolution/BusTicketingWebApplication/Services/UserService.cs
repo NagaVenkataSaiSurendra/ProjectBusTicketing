@@ -149,7 +149,7 @@ namespace BusTicketingWebApplication.Services
             }
             return null;
         }
-        public List<Booking> GetBookingHistory(UserIdDTO userIdDTO)
+        public List<Booking> GetBookingHistory(UserNameDTO userNameDTO)
         {
             var booking = _bookingRepository.GetAll();
             if (booking != null)
@@ -157,7 +157,7 @@ namespace BusTicketingWebApplication.Services
                 List<Booking> BookingHistory = new List<Booking>();
                 for (int i = 0; i < booking.Count; i++)
                 {
-                    if (booking[i].UserId == userIdDTO.Id)
+                    if (booking[i].UserName == userNameDTO.UserName)
                     {
                         BookingHistory.Add(booking[i]);
                     }

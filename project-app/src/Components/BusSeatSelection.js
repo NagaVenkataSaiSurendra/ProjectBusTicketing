@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './BusSeatSelection.css';
+import { useLocation } from 'react-router-dom';
 
 const BusSeatSelection = () => {
   const totalRows = 8;
   const seatsPerRow = 4;
   const seatPrice = 200; // Set the price per seat
-
   // State for selected seats and booked seats
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
+  const location = useLocation();
+  const thisBus = localStorage.getItem('thisBus');
+  const thisDate = localStorage.getItem('thisDate');
+  const thisUserName = localStorage.getItem('thisUserName');
+  const thisToken = localStorage.getItem('thisToken');
 
-  // Fetch booked seats from the backend when the component mounts
   useEffect(() => {
     fetch('http://localhost:5041/api/Booking/BookedSeatsList', {
       method: 'POST',
@@ -19,7 +23,7 @@ const BusSeatSelection = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id: 2, // Replace with the actual bus ID you want to use
+        id: thisBus, 
       }),
     })
       .then((response) => {
@@ -38,7 +42,6 @@ const BusSeatSelection = () => {
   // Function to check if a seat is booked
   const isSeatBooked = (seatNumber) => {
     return bookedSeats.includes(seatNumber);
-    
   };
 
   // Handle click on a seat
@@ -56,26 +59,27 @@ const BusSeatSelection = () => {
   // Handle booking
   
 const handleBookClick = () => {
-  // Perform any necessary booking logic
-  // For example, you can update a backend database or show a confirmation message
+  // booking logic
 
-  // Create a fetch request to send the data to the backend
   fetch('http://localhost:5041/api/Booking', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    
     body: JSON.stringify({
-      busId: 2, // Replace with the actual bus ID you want to use
-      userId: 1, // Replace with the actual user ID you want to use
+      busId:thisBus, 
+      userName: thisUserName, 
       selectedSeats: selectedSeats,
-      date: '2023-12-01', // Replace with the actual date you want to use
+      date: thisDate, 
     }),
   })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+            
+
       return response.json();
     })
     .then((data) => {
@@ -151,3 +155,4 @@ const handleBookClick = () => {
 };
 
 export default BusSeatSelection;
+

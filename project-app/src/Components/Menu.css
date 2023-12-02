@@ -1,28 +1,64 @@
+/* Menu.css */
 
-.container {
- background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
+/* Top bar styles */
+.top-bar {
   display: flex;
-  flex-direction: column; /* Stack the items vertically */
-  align-items: center;
-  justify-content: flex-start; /* Align items to the top of the container */
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #d0dae3;
 }
 
-/* Add transparency to the navbar */
+.top-bar .nav-link {
+  color: rgb(16, 16, 164);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  
+}
+
+.top-bar .nav-link:hover {
+  background-color: #e3e9ef; /* Change the background color on hover */
+}
+
+/* Navbar styles */
 .navbar {
-  background-color: rgba(255, 255, 255, 0.7);
-  width: 100%; /* Make the navbar span the entire width of the container */
+  background-color: #e2e7ed;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Make menu items transparent */
-.navbar-nav .nav-item .nav-link {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: black;
+.navbar-nav {
+  display: flex;
+  align-items: center;
 }
 
-/* Style for active menu item */
-.navbar-nav .nav-item.active .nav-link {
-  background-color: rgba(255, 255, 255, 0.8);
+.nav-item {
+  margin-right: 15px;
+}
+
+.nav-link {
+  color: #0f0f0f;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  background-color: #34495e; /* Change the background color on hover */
+}
+
+/* Icon styles */
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* Main container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }

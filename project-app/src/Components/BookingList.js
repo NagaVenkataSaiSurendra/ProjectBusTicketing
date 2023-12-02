@@ -3,7 +3,7 @@ import { useState } from "react";
 function BookingList(){
     const [bookingList,setBookingList]=useState([]);
     var getBookings=()=>{
-        fetch('http://localhost:5041/api/bus',{
+        fetch('http://localhost:5041/api/booking',{
         method:"GET",
         headers:{
             'Accept':'application/json',

@@ -90,9 +90,16 @@ function RegisterUser(){
     
     return(
         <form className="registerForm">
-            <label className="form-control">Username</label>
-            <input type="text" className="form-control" value={username}
-                    onChange={(e)=>{setUsername(e.target.value)}}/>
+           <div className="form-group label-input-container">
+  <label htmlFor="username">Username</label>
+  <input
+    type="text"
+    id="username"
+    className="form-control"
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+  />
+</div>
            <label >{usernameError}</label>
             <label className="form-control">Email</label>
             <input type="email" className="form-control" value={email}

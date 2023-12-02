@@ -14,6 +14,7 @@ import Protected from './Protected';
 import UserHistory from './Components/UserHistory';
 import Users from './Components/Users';
 import BookingList from './Components/BookingList';
+import RedBus from './Components/RedBus';
 
 
 function App() {
@@ -36,13 +37,13 @@ function App() {
           <Route path='/' element={<RegisterUser/>}/>
           <Route path="/UserLogin" element={<UserLogin/>}/>
           <Route path="Buses" element={<Buses/>}/>
-          <Route path="SearchBus" element ={<SearchBus/>}/>
-          <Route path="Seat" element={<Seat/>}/>
+          
           <Route path="BusSeatSelection" element={<BusSeatSelection/>}/>
           <Route path="UpdateUser" element={<UpdateUser/>}/>
           <Route path="UserHistory" element={<UserHistory/>}/>
           <Route path="Users" element={<Users/>}/>
           <Route path="BookingList" element={<BookingList/>}/>
+          <Route path="RedBus" element={<RedBus/>}/>
         </Routes>
       </BrowserRouter>  
       

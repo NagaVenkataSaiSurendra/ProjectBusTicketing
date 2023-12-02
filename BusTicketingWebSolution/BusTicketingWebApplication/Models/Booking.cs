@@ -7,7 +7,7 @@ namespace BusTicketingWebApplication.Models
         [Key]
         public int BookingId { get; set; }
         
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         public int BusId { get; set; }
         public  string? Date { get; set; }
         
