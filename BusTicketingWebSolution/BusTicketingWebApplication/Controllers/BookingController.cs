@@ -25,7 +25,7 @@ namespace BusTicketingWebApplication.Controllers
             _bookedSeatService= bookedSeatService;
         }
 
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(BookingDTO bookingDTO)
         {
@@ -45,7 +45,7 @@ namespace BusTicketingWebApplication.Controllers
             return BadRequest(errorMessage);
         }
 
-       // [Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult GetAllBookings()
         {
@@ -65,7 +65,7 @@ namespace BusTicketingWebApplication.Controllers
             return BadRequest(errorMessage);
         }
 
-       // [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [Route("Cancel/DeleteBooking")]
         [HttpDelete]
         public ActionResult DeleteBooking(BookingDTO bookingDTO)

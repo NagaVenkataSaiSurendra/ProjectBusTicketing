@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './RegisterUser.css';
+import './UpdateUser.css';
 
 function UpdateUser() {
   const [userName, setUserName] = useState('');

@@ -5,7 +5,7 @@ function Bus(){
         "availableSeats":40,
         "bookedSeats":0,
         "start":"Eluru",
-        "end":"Chennai"zzzzz
+        "end":"Chennai"
 
     }
     var checkSeats=availableSeats>0?true:false;

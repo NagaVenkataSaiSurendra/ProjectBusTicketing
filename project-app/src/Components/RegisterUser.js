@@ -3,7 +3,6 @@ import './RegisterUser.css';
 import axios from "axios";
 
 function RegisterUser(){
-    const roles =["User","Admin"];
     const [username,setUsername] = useState("");
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
@@ -55,9 +54,7 @@ function RegisterUser(){
             return false;
         }
 
-        if(role!="User" && role!="Admin"){
-            return false;
-        }
+        
       return true;
     }
     const signUp = (event)=>{
@@ -71,7 +68,7 @@ function RegisterUser(){
         
         axios.post("http://localhost:5041/api/Customer",{
             username: username,
-            role:	role,
+            role:	"User",
             password:password,
             email:email,
             city:city,
@@ -125,14 +122,7 @@ function RegisterUser(){
             <input type="text" className="form-control" value={repassword}
                     onChange={(e)=>{setrePassword(e.target.value)}}/>
             <label>{repasswordError}</label>
-            <label className="form-control">Role</label>
-            <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
-                <option value="select">Select Role</option>
-                {roles.map((r)=>
-                    <option value={r} key={r}>{r}</option>
-                )}
-            </select>
-            <br/>
+            
             <button className="btn btn-primary button" onClick={signUp}>Sign Up</button>
             
             <button className="btn btn-danger button">Cancel</button>

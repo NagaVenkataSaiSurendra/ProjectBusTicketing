@@ -64,7 +64,9 @@ const handleBookClick = () => {
   fetch('http://localhost:5041/api/Booking', {
     method: 'POST',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")
     },
     
     body: JSON.stringify({

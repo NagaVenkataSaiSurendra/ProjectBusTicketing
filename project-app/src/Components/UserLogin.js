@@ -2,10 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import './UserLogin.css'
 function UserLogin(){
-    const roles =["User","Admin"];
+    const roles =["User"];
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-    const [role,setRole] = useState("");
+    var [role,setRole] = useState("");
     const [thisUserName, setThisUserName] = useState(null);
     const [thisToken, setThisToken] = useState(null);
     var [usernameError,setUsernameError]=useState("");
@@ -18,8 +18,14 @@ function UserLogin(){
            
         if(password=='')
             return false;
-        if(role=='Select Role')
-            return false;
+        if(username=="Admin-Vinay" || username=="Admin-Naga"){
+                role="Admin";
+            }
+        else{
+            role="User";
+         }
+   
+             
         return true;
     }
     const logIn = (event)=>{
@@ -30,6 +36,7 @@ function UserLogin(){
             alert('please check yor data')
             return;
         }
+        
         axios.post("http://localhost:5041/api/Customer/Login",{
             username: username,
             role:	role,
@@ -40,7 +47,8 @@ function UserLogin(){
         console.log(userData);
         alert("Successfully Logged In!!")
         localStorage.setItem('thisUserName', username);
-        //localStorage.setItem('thisToken',userData.data); have to work on this.
+        var token =userData.data.token;
+        localStorage.setItem("token",token); 
         
         
     })
@@ -61,13 +69,7 @@ return(
                     onChange={(e)=>{setPassword(e.target.value)}}/>
             
             
-            <select className="form-select" onChange={(e)=>{setRole(e.target.value)}}>
-                <option value="select">Select Role</option>
-                {roles.map((r)=>
-                    <option value={r} key={r}>{r}</option>
-                )}
-            </select>
-            <br/>
+            
             <button className="btn btn-primary button" onClick={logIn}>Login</button>
             
             <button className="btn btn-danger button">Cancel</button>

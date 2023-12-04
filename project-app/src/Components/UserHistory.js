@@ -11,7 +11,7 @@ function UserHistory(){
 
     const userData=()=>{
         if(userName===""){
-        setUserNameError("Please enter your USerName!!");
+        setUserNameError("Please enter your UserName!!");
         return false;
             
         }
