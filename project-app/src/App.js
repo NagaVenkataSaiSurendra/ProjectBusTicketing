@@ -15,6 +15,7 @@ import UserHistory from './Components/UserHistory';
 import Users from './Components/Users';
 import BookingList from './Components/BookingList';
 import RedBus from './Components/RedBus';
+import Logout from './Components/Logout';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="Users" element={<Protected><Users/></Protected>} />
         <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
         <Route path="RedBus" element={<RedBus />} />
+        <Route path="Logout" element={<Logout/>}/>
       </Routes>
     </BrowserRouter>
   );

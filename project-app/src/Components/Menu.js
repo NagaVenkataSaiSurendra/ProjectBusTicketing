@@ -32,6 +32,11 @@ function Menu() {
             <li className="nav-item">
               <Link className="nav-link" to="/BookingList">Bookings</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/BookingList">Bookings</Link>
+            </li> <li className="nav-item">
+              <Link className="nav-link" to="/Logout">Logout</Link>
+            </li>
           </ul>
         </div>
         <div className="ml-auto">

@@ -16,7 +16,7 @@ namespace BusTicketingWebApplication.Services
         private readonly ITokenService _tokenService;
         private readonly IBookingRepository _bookingRepository;
 
-        public UserService(IUserRepository userrepository, ITokenService tokenService, IBusRepository busrepository,IBookingRepository bookingRepository)
+        public UserService(IUserRepository userrepository, ITokenService tokenService, IBusRepository busrepository, IBookingRepository bookingRepository)
         {
             _userrepository = userrepository;
             _tokenService = tokenService;
@@ -49,7 +49,7 @@ namespace BusTicketingWebApplication.Services
             {
                 UserName = userDTO.UserName,
                 Email = userDTO.Email,
-                Phone= userDTO.Phone,
+                Phone = userDTO.Phone,
                 City = userDTO.City,
                 Pincode = (int)userDTO.Pincode,
                 Password = hmac.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password)),
@@ -67,8 +67,8 @@ namespace BusTicketingWebApplication.Services
         }
         public UserDataDTO UpdateUser(UserDataDTO userDataDTO)
         {
-            var userData=_userrepository.GetById(userDataDTO.UserName);
-        
+            var userData = _userrepository.GetById(userDataDTO.UserName);
+
             userData.Email = userDataDTO.Email;
             userData.City = userDataDTO.City;
             userData.Phone = userDataDTO.Phone;
@@ -134,11 +134,11 @@ namespace BusTicketingWebApplication.Services
         public BusDTO BookSeat(BusDTO busDTO)
         {
             var busData = _busrepository.GetById(busDTO.Id);
-            
-            
+
+
             busData.BookedSeats += busDTO.BookedSeats;
             busData.AvailableSeats -= busDTO.BookedSeats;
-            
+
             if (busData != null)
             {
                 var result = _busrepository.Update(busData);

@@ -13,5 +13,6 @@ namespace BusTicketingWebApplication.Interfaces
         BusDTO BookSeat(BusDTO busDTO);
         List<Booking> GetBookingHistory(UserNameDTO userNameDTO);
         List<User> GetAllUsers();
+        
     }
 }

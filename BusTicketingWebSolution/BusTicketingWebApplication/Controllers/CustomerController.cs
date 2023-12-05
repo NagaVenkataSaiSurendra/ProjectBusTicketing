@@ -63,7 +63,7 @@ namespace BusTicketingWebApplication.Controllers
 
         [HttpPost]
         [Route("BusSearch")]
-        public ActionResult BusSearch(BusSearchDTO busSearchDTO) 
+        public ActionResult BusSearch(BusSearchDTO busSearchDTO)
         {
             string errorMessage = string.Empty;
             try
@@ -71,7 +71,7 @@ namespace BusTicketingWebApplication.Controllers
                 var result = _userService.BusSearch(busSearchDTO);
                 _logger.LogInformation("Bus Search is listed!!");
                 return Ok(result);
-                
+
             }
             catch (Exception e)
             {
@@ -134,15 +134,15 @@ namespace BusTicketingWebApplication.Controllers
                 _logger.LogInformation("Users profiles are listed!!");
                 return Ok(res);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                msg=e.Message;
+                msg = e.Message;
                 _logger.LogError("No User Profile found!!");
             }
             return BadRequest(msg);
         }
 
 
-        
+
     }
 }

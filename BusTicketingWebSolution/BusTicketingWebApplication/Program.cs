@@ -22,7 +22,7 @@ namespace BusTicketingWebApplication
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-             builder.Services.AddControllers();
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(opt =>
             {
@@ -89,9 +89,9 @@ namespace BusTicketingWebApplication
             builder.Services.AddScoped<IBusService, BusService>();
             builder.Services.AddScoped<IBookingService, BookingService>();
             builder.Services.AddScoped<IBusRouteService, BusRouteService>();
-            builder.Services.AddScoped<IBookedSeatService,BookedSeatService>();
+            builder.Services.AddScoped<IBookedSeatService, BookedSeatService>();
 
-           //builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+            //builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
             var app = builder.Build();
 

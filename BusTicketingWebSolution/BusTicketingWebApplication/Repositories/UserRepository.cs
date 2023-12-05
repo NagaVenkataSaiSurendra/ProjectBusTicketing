@@ -46,7 +46,7 @@ namespace BusTicketingWebApplication.Reposittories
             return user;
         }
 
-       
+
 
         public User Update(User entity)
         {

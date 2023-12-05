@@ -1,27 +1,29 @@
 import { useState } from "react";
 import axios from "axios";
-import './UserHistory.css';
+
+
 
 function UserHistory(){
-    const [userName,setUserName]=useState("");
+   
+    const thisUserName = localStorage.getItem("thisUserName");
     const [userNameError, setUserNameError] = useState("");
     const [searchError,setSearchError]=useState("");
     const [searchResults,setSearchResults]=useState("");
     const [searchPerformed, setSearchPerformed] = useState(false);
 
     const userData=()=>{
-        if(userName===""){
-        setUserNameError("Please enter your UserName!!");
+      if (thisUserName == "") {
+        setUserNameError("Please Login first!");
         return false;
-            
-        }
+      }
+          
         return true;
     }
-    const handleSearch = (event) => {
+        const handleSearch = (event) => {
         event.preventDefault();
         setUserNameError("");
         setSearchError("");
-    
+       
         const isValidData = userData();
     
         if (!isValidData) {
@@ -31,7 +33,7 @@ function UserHistory(){
     
         axios
           .post("http://localhost:5041/api/Customer/UserBookingHistory", {
-            userName:userName,
+            userName:thisUserName,
           })
           .then((response) => {
             console.log(response.data);
@@ -47,24 +49,20 @@ function UserHistory(){
       
       return(
         <div className="history">
-        <form>
-        <label >UserName</label>
-          <input
-            type="text"
-            className="form-control"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-           {userNameError && <p className="error-message">{userNameError}</p>}
-
-          <button className="btn btn-primary button" onClick={handleSearch}>
-            History
-          </button>
-        </form>
-        {searchPerformed && (
-        <div>
-        <h2>Booking History</h2>
-        <table className="table">
+        <br />
+      {!searchPerformed && (
+        <button className="btn btn-primary button" onClick={handleSearch}>
+          Show User history
+        </button>
+      )}
+          
+          {searchPerformed && (
+        <center>
+          <div>
+            <br />
+            <h2>Booking History</h2>
+            <br />
+            <table className="table">
           <thead>
             <tr>
             <th>S.No</th>
@@ -90,11 +88,11 @@ function UserHistory(){
              ))}
           </tbody>
         </table>
-      </div>
-        )}
-  </div>
-
-    );
-    
+          </div>
+        </center>
+      )}
+    </div>
+  );
 }
+
 export default UserHistory;
