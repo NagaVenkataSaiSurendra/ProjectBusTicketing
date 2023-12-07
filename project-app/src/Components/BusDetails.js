@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function BusDetails() {
   const [busIdError, setBusIdError] = useState("");
-  const [searchError, setSearchError] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [searchError, setSearchError] = useState("");
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
@@ -18,52 +18,65 @@ function BusDetails() {
 
     axios
       .post("http://localhost:5041/api/Bus/GetBusById", {
-        id: 10
+        id: 10,
       })
       .then((response) => {
         console.log(response.data);
-
-        // Ensure that response.data is an array before setting it to searchResults
-        if (Array.isArray(response.data)) {
-          setSearchResults(response.data);
-          setSearchPerformed(true);
-        } else {
-          setSearchError("Invalid response format. Please check the API.");
-        }
+        setSearchResults(response.data);
+        setSearchPerformed(true);
       })
+      
       .catch((err) => {
         console.error(err);
-        setSearchError("Error searching bus. Please try again.");
+        setSearchError("Error searching user. Please try again.");
       });
   };
 
   return (
     <div>
-      <h2>Driver Details</h2>
-      {searchPerformed ? (
+      <center>
+        <h1 className="alert alert-success">
+          <center>Driver Details</center>
+        </h1>
+      </center>
+      {searchPerformed && (
         <div>
-          {searchResults.map((bus, index) => (
-            <div key={index} className="bus-details-box">
-              <h3>Driver Details</h3>
-              <p>
-                <strong>Name:</strong> {bus.driverName}
-              </p>
-              <p>
-                <strong>Phone:</strong> {bus.driverPhone}
-              </p>
-              <p>
-                <strong>Rating:</strong> {bus.driverRating}
-              </p>
-              <p>
-                <strong>Age:</strong> {bus.age}
-              </p>
-            </div>
-          ))}
+          <center>
+            {Array.isArray(searchResults) && searchResults.length > 0 ? (
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>BusId</th>
+                    <th>Type</th>
+                    <th>Cost</th>
+                    <th>Available Seats</th>
+                    <th>Booked Seats</th>
+                    <th>Start</th>
+                    <th>End</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {searchResults.map((bus, index) => (
+                    <tr key={bus.busId}>
+                      <td>{index + 1}</td>
+                      <td>{bus.id}</td>
+                      <td>{bus.type}</td>
+                      <td>{bus.cost}</td>
+                      <td>{bus.availableSeats}</td>
+                      <td>{bus.bookedSeats}</td>
+                      <td>{bus.start}</td>
+                      <td>{bus.end}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>No search results found.</p>
+            )}
+          </center>
         </div>
-      ) : (
-        <p>Loading...</p>
       )}
-      {searchError && <p>{searchError}</p>}
     </div>
   );
 }

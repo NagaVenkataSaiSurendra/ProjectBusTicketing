@@ -8,6 +8,6 @@
     "\\BusTicketingWebApplication\\Models\\DTOs",
     "\\BusTicketingWebApplication\\Services"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\Controllers\\BookingController.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\Controllers\\BusController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -39,7 +39,7 @@ function App() {
         <Route path="RedBus" element={<RedBus />} />
         <Route path="Logout" element={<Logout/>}/>
         <Route path="addBus" element={<Protected><AddBus/></Protected>}/>
-        <Route path="updateBus" element={<UpdateBus/>}/>
+        <Route path="updateBus" element={<Protected><UpdateBus/></Protected>}/>
       </Routes>
     </BrowserRouter>
   );

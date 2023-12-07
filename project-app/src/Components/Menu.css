@@ -62,6 +62,10 @@
   margin: 0 auto;
   padding: 20px;
 }
-
+body {
+  background: url('https://besthqwallpapers.com/Uploads/10-6-2020/135799/mercedes-benz-tourismo-passenger-bus-exterior-new-gray-tourismo-german-buses.jpg') no-repeat center center fixed;
+  background-size: cover; /* Ensure the image covers the entire viewport */
+  font-family: 'Arial', sans-serif; /* Change to your preferred font */
+}
 
 

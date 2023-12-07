@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import './Buses.css';
 function Buses() {
   const [busList, setBusList] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
