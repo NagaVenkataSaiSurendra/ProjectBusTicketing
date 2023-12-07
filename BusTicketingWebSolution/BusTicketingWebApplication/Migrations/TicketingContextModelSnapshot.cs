@@ -112,6 +112,12 @@ namespace BusTicketingWebApplication.Migrations
                     b.Property<string>("Date")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("NotificationDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SelectedSeats")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

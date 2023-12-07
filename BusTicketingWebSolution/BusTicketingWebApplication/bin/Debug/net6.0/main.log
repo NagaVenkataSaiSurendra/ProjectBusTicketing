@@ -14211,3 +14211,749 @@ SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b]
 FROM [Buses] AS [b]
 WHERE [b].[Id] = @__key_0
 2023-12-07 14:43:47,861 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BusController.GetBusById[112] - Busses listed
+2023-12-07 16:39:42,602 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:39:42,944 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:39:43,372 [1] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:39:43,431 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:39:43,434 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:40:15,973 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:40:16,164 [1] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:40:16,697 [1] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:40:20,969 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (92ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2023-12-07 16:40:21,104 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (111ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-12-07 16:40:21,111 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+2023-12-07 16:40:21,114 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2023-12-07 16:40:21,266 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (102ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2023-12-07 16:40:21,299 [1] INFO Microsoft.EntityFrameworkCore.Migrations.?[?] - Applying migration '20231207110943_email'.
+2023-12-07 16:40:21,605 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (199ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Bookings] ADD [Email] nvarchar(max) NULL;
+2023-12-07 16:40:21,931 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (324ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE [Bookings] ADD [NotificationDateTime] datetime2 NOT NULL DEFAULT '0001-01-01T00:00:00.0000000';
+2023-12-07 16:40:21,992 [1] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (59ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20231207110943_email', N'6.0.24');
+2023-12-07 16:42:24,468 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 16:42:25,628 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 16:42:25,645 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 16:42:25,650 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 16:46:30,236 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:46:30,715 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 16:46:31,346 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:31,346 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:34,139 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:39,602 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:40,807 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:42,032 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 16:46:54,319 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Connection.?[?] - An error occurred using the connection to database 'dbBusTicketingSystem' on server 'DESKTOP-69ET2S9\DEMOINSTANCE'.
+2023-12-07 16:46:54,474 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Connection.?[?] - An error occurred using the connection to database 'dbBusTicketingSystem' on server 'DESKTOP-69ET2S9\DEMOINSTANCE'.
+2023-12-07 16:46:54,653 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Connection.?[?] - An error occurred using the connection to database 'dbBusTicketingSystem' on server 'DESKTOP-69ET2S9\DEMOINSTANCE'.
+2023-12-07 16:46:56,365 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Connection.?[?] - An error occurred using the connection to database 'dbBusTicketingSystem' on server 'DESKTOP-69ET2S9\DEMOINSTANCE'.
+2023-12-07 16:46:57,222 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Query.?[?] - An exception occurred while iterating over the results of a query for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+2023-12-07 16:46:57,222 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Query.?[?] - An exception occurred while iterating over the results of a query for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+2023-12-07 16:46:58,304 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Query.?[?] - An exception occurred while iterating over the results of a query for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+2023-12-07 17:00:52,541 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 17:00:53,236 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 17:00:53,252 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 17:00:53,258 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 17:05:21,378 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:05:21,774 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:05:22,168 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:05:26,406 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (362ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 17:05:40,038 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:05:40,321 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (261ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 17:06:02,668 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:06:02,901 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (184ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-07 17:06:02,940 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[NotificationDateTime], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-07 17:06:03,017 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.GetAllBookings[56] - Bookings listed
+2023-12-07 17:06:03,188 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:06:03,227 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-07 17:06:03,243 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[NotificationDateTime], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-07 17:06:03,248 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.GetAllBookings[56] - Bookings listed
+2023-12-07 17:06:31,748 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:06:31,756 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 17:07:01,410 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:07:01,463 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (41ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Buses] AS [b]
+2023-12-07 17:07:01,483 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+2023-12-07 17:07:01,516 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.BusSearch[72] - Bus Search is listed!!
+2023-12-07 17:07:07,867 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:07:07,895 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:07:08,031 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (93ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:07:08,036 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (16ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:07:08,067 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.BookedSeatsList[96] - Booking done
+2023-12-07 17:07:08,082 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.BookedSeatsList[96] - Booking done
+2023-12-07 17:07:35,516 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:07:35,539 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (9ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:07:35,547 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:07:36,129 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (243ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 17:07:36,212 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (37ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:07:36,224 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (0ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:07:36,260 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 17:07:36,636 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (124ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 17:07:37,862 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 17:18:32,674 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:18:34,771 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (158ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 17:19:24,125 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:19:24,213 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (55ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:19:24,229 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:19:24,460 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (204ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 17:19:24,558 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (76ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:19:24,573 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:19:24,591 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (7ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 17:19:24,686 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (68ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 17:19:25,428 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 17:20:36,673 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:20:36,685 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:20:36,696 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (0ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:20:36,838 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (129ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 17:20:36,856 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:20:36,870 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (4ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:20:36,879 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 17:20:36,895 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 17:20:37,028 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 17:35:08,481 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 17:35:08,904 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 17:35:08,921 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 17:35:08,926 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 17:48:05,421 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:48:05,796 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:48:06,232 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:48:10,017 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (206ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 17:50:30,735 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:50:32,705 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (798ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:51:14,947 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (254ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 17:51:31,208 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (362ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 17:51:45,909 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (801ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:52:05,460 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 17:52:10,972 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (11ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 17:53:06,790 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (246ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 17:53:37,474 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 17:57:22,228 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 17:57:23,323 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 17:57:23,343 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 17:57:23,347 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 17:58:11,337 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:58:11,574 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 17:58:11,971 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 17:58:15,934 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (405ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 18:00:34,102 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:00:35,207 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (253ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:00:52,141 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:01:16,165 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (611ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:01:30,505 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (184ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:01:59,515 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (10ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:02:12,422 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:02:41,042 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (202ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:07:39,819 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 18:07:46,946 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 18:07:46,968 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 18:07:46,976 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 18:10:10,411 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:10:10,929 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:10:11,790 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:10:16,111 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (235ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 18:10:27,170 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:10:27,228 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (21ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 18:12:28,206 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:12:30,027 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (964ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:12:30,552 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (30ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:12:31,942 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (443ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:12:32,201 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (113ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:12:32,292 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (20ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:12:32,398 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (7ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:12:32,662 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (97ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:12:32,978 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 18:15:37,749 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 18:15:38,267 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 18:15:38,285 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 18:15:38,289 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 18:18:16,901 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:18:17,151 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:18:17,577 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:18:22,044 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (471ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:18:22,285 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (17ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:18:22,756 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (245ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:18:22,936 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (66ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:18:22,960 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:18:23,004 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:18:23,208 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (75ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:18:23,458 [.NET ThreadPool Worker] ERROR BusTicketingWebApplication.Controllers.BookingController.Create[35] - Booking is not Added!!
+2023-12-07 18:19:41,451 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:19:42,120 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (212ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:22:23,305 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (126ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:24:48,756 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (285ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:25:02,994 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (124ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:25:24,949 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (20ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:25:37,153 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (66ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:25:56,443 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (119ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:33:52,226 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 18:33:53,106 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 18:33:53,193 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 18:33:53,199 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 18:36:01,834 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:36:02,056 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:36:02,417 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:36:06,462 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (267ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:36:06,685 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (7ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:36:07,087 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (159ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:36:07,223 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (78ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:36:07,251 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:36:07,286 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:36:07,515 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (70ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:36:07,938 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.Create[36] - Bookings are Added!!
+2023-12-07 18:47:44,305 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 18:47:44,800 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 18:47:44,814 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 18:47:44,817 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 18:49:59,629 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:50:00,271 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:50:01,595 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:50:08,355 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (910ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:50:08,722 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (17ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:50:09,319 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (262ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:50:09,518 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (110ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:50:09,549 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:50:09,581 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 18:50:09,799 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (96ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:50:10,590 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.Create[36] - Bookings are Added!!
+2023-12-07 18:54:31,135 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 18:54:32,069 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 18:54:32,108 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 18:54:32,121 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 18:56:04,361 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:56:04,649 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 18:56:05,376 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 18:56:11,272 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (303ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:56:11,678 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (16ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 18:56:12,241 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (214ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 18:56:12,481 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (153ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 18:56:12,747 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (87ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([BookedSeats], [BusId])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-07 18:56:12,960 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 18:56:13,726 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.Create[36] - Bookings are Added!!
+2023-12-07 19:00:32,197 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:00:32,994 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (336ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 19:01:03,379 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:01:03,705 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (279ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-07 19:01:07,553 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:01:07,871 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (75ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-07 19:01:07,904 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[NotificationDateTime], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-07 19:01:07,942 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.GetAllBookings[56] - Bookings listed
+2023-12-07 19:01:08,245 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:01:08,302 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-07 19:01:08,327 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[NotificationDateTime], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-07 19:01:08,349 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.GetAllBookings[56] - Bookings listed
+2023-12-07 19:06:47,467 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:06:51,244 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (247ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+2023-12-07 19:06:51,984 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+2023-12-07 19:06:52,025 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.GetAllUsers[115] - Users listed
+2023-12-07 19:06:52,351 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:06:52,396 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+2023-12-07 19:06:52,412 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+2023-12-07 19:06:52,429 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.GetAllUsers[115] - Users listed
+2023-12-07 19:09:02,829 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:09:03,807 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (285ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 8000) (DbType = Binary), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserName], [City], [Email], [Key], [Password], [Phone], [Pincode], [Role])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-12-07 19:10:46,041 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-07 19:10:46,804 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-07 19:10:46,901 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-07 19:10:46,909 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-07 19:12:57,317 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 19:12:57,608 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-07 19:12:58,343 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:13:03,897 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (427ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 19:13:05,142 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (18ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 19:13:05,682 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (202ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 19:13:05,849 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (71ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 19:13:05,881 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 19:13:05,917 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 19:13:06,119 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (65ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 19:13:10,923 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.Create[36] - Bookings are Added!!
+2023-12-07 19:17:56,882 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:17:58,120 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (209ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 8000) (DbType = Binary), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (Size = 4000), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserName], [City], [Email], [Key], [Password], [Phone], [Pincode], [Role])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-12-07 19:18:45,298 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-07 19:18:45,408 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (70ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 19:18:45,437 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (4ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeats], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-07 19:18:45,521 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (56ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Single), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Single), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Buses] SET [AvailableSeats] = @p0, [BookedSeats] = @p1, [Cost] = @p2, [DriverAge] = @p3, [DriverName] = @p4, [DriverPhone] = @p5, [DriverRating] = @p6, [Duration] = @p7, [End] = @p8, [Start] = @p9, [StartTime] = @p10, [Type] = @p11
+WHERE [Id] = @p12;
+SELECT @@ROWCOUNT;
+2023-12-07 19:18:45,567 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (30ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 19:18:45,605 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (0ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[BookedSeats], [b].[BusId]
+FROM [BookedSeats] AS [b]
+WHERE [b].[BusId] = @__key_0
+2023-12-07 19:18:45,672 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (37ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [BookedSeats] = @p0, [BusId] = @p1
+WHERE [Id] = @p2;
+SELECT @@ROWCOUNT;
+2023-12-07 19:18:45,792 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (73ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [NotificationDateTime], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-07 19:18:49,825 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.Create[36] - Bookings are Added!!

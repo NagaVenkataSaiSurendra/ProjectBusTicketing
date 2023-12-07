@@ -6,8 +6,9 @@
     "\\BusTicketingWebApplication\\Interfaces",
     "\\BusTicketingWebApplication\\Models",
     "\\BusTicketingWebApplication\\Models\\DTOs",
+    "\\BusTicketingWebApplication\\Repositories",
     "\\BusTicketingWebApplication\\Services"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\Controllers\\BusController.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\Repositories\\BookingRepository.cs",
   "PreviewInSolutionExplorer": false
 }

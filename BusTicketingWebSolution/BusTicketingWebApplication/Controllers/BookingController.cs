@@ -25,7 +25,7 @@ namespace BusTicketingWebApplication.Controllers
             _bookedSeatService= bookedSeatService;
         }
 
-        [Authorize]
+       //[Authorize]
         [HttpPost]
         public ActionResult Create(BookingDTO bookingDTO)
         {
