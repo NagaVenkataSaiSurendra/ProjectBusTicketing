@@ -5,16 +5,17 @@ import { useLocation } from 'react-router-dom';
 const BusSeatSelection = () => {
   const totalRows = 8;
   const seatsPerRow = 4;
-  const seatPrice = 200; // Set the price per seat
+  const seatPrice =localStorage.getItem("thisCost"); // Set the price per seat
   // State for selected seats and booked seats
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
-  const location = useLocation();
+
   const thisBus = localStorage.getItem('thisBus');
   const thisDate = localStorage.getItem('thisDate');
   const thisUserName = localStorage.getItem('thisUserName');
   const thisToken = localStorage.getItem('thisToken');
+  const cost=localStorage.getItem("cost");
 
   useEffect(() => {
     fetch('http://localhost:5041/api/Booking/BookedSeatsList', {
@@ -78,7 +79,7 @@ const handleBookClick = () => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`HTTP error! Status: ${response.status}/-`);
       }
             
 
@@ -98,17 +99,19 @@ const handleBookClick = () => {
 
   // Calculate total price based on selected seats
   const calculateTotalPrice = () => {
-    return selectedSeats.length * seatPrice;
+    return selectedSeats.length * cost;
   };
 
   return (
     <div className="seat-selection-container">
       <h2>Bus Seat Selection</h2>
-      <div className="legend">
-        <div className="legend-item booked">Booked Seat</div>
-        <div className="legend-item selected">Selected Seat</div>
-        <div className="legend-item available">Available Seat</div>
-      </div>
+      <div>
+    <h6>Booked Seats <span class="seat-status booked"></span></h6>
+
+    <h6>Available Seats <span class="seat-status available"></span></h6>
+    
+    <h6>Selected Seats <span class="seat-status selected"></span></h6>
+</div>
       <div className="bus-seats">
         {[...Array(totalRows)].map((_, rowIndex) => (
           <div key={rowIndex} className="seat-row">
@@ -148,7 +151,7 @@ const handleBookClick = () => {
       <div className="total-price-and-button-container">
         <p>Selected Seats: {selectedSeats.join(', ')}</p>
         <div className="total-price-and-button">
-          <p>Total Price: ${calculateTotalPrice()}</p>
+          <p>Total Price: ₹{calculateTotalPrice()}</p>
           <button onClick={handleBookClick}>Book</button>
         </div>
       </div>

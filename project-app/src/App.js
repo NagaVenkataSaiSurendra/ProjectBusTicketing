@@ -16,12 +16,18 @@ import Users from './Components/Users';
 import BookingList from './Components/BookingList';
 import RedBus from './Components/RedBus';
 import Logout from './Components/Logout';
+import AddBus from './Components/AddBus';
+import UpdateBus from './Components/UpdateBus';
+import BusDetails from './Components/BusDetails';
 
 function App() {
   return (
+
+    //<BusDetails/>
     <BrowserRouter>
       <Menu />
       <Routes>
+        
         <Route path='/' element={<RegisterUser />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="Buses" element={<Protected><Buses /></Protected>} />
@@ -32,6 +38,8 @@ function App() {
         <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
         <Route path="RedBus" element={<RedBus />} />
         <Route path="Logout" element={<Logout/>}/>
+        <Route path="addBus" element={<Protected><AddBus/></Protected>}/>
+        <Route path="updateBus" element={<UpdateBus/>}/>
       </Routes>
     </BrowserRouter>
   );

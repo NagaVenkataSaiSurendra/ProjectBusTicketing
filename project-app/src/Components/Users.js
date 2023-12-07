@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
 function Users() {
   const [userList, setUserList] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
-
-  var getUsers = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    // Fetch buses when the component is mounted
+    getUsers();
+  }, []);
+  
+  var getUsers = () => {
+    
     
        fetch('http://localhost:5041/api/Customer/GetAllUsers', {
         method: 'GET',
@@ -25,14 +29,15 @@ function Users() {
 })
 }
 
+
   return (
     <div>
-      <h1 className="alert alert-success">Users</h1>
-      <button className="btn btn-success" onClick={getUsers}>Get All Users</button>
+      <h1 className="alert alert-success"><center>Users</center></h1>
+      
 
       {searchPerformed && (
         <div>
-          <h2>Booking History</h2>
+         
           <table className="table">
             <thead>
               <tr>

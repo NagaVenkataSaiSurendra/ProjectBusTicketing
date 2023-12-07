@@ -15,6 +15,7 @@ function RedBus() {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [thisBus, setThisBus] = useState(null);
   const [thisDate, setThisDate] = useState(null);
+  
 
   const checkUserData = () => {
     if (fromLocation === '') {
@@ -33,12 +34,14 @@ function RedBus() {
 
   const navigate = useNavigate();
 
-  const handleBook = (id, selectedDate) => {
+  const handleBook = (id, selectedDate,cost) => {
     setThisBus(id);
     setThisDate(selectedDate);
+    
     console.log(thisBus,thisDate);
+    localStorage.setItem("cost",cost);
     localStorage.setItem('thisBus', id);
-    localStorage.setItem('thisDate', selectedDate);
+    localStorage.setItem('thisDate', selectedDate,cost);
     
 
     // Additional logic for booking if needed
@@ -64,6 +67,7 @@ function RedBus() {
         start: fromLocation,
         end: toLocation,
         date: selectedDate,
+       
       })
       .then((response) => {
         console.log(response.data);
@@ -166,7 +170,7 @@ function RedBus() {
                       <center>
                         <button
                           className="book-button"
-                          onClick={() => handleBook(bus.id, selectedDate)}
+                          onClick={() => handleBook(bus.id, selectedDate,bus.cost)}
                         >
                           Book
                         </button>

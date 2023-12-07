@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 
 
@@ -10,6 +10,11 @@ function UserHistory(){
     const [searchError,setSearchError]=useState("");
     const [searchResults,setSearchResults]=useState("");
     const [searchPerformed, setSearchPerformed] = useState(false);
+    useEffect(() => {
+      // This will run when the component is mounted
+      handleSearch();
+    }, []); // The empty dependency array ensures that it runs only once on mount
+  
 
     const userData=()=>{
       if (thisUserName == "") {
@@ -19,8 +24,8 @@ function UserHistory(){
           
         return true;
     }
-        const handleSearch = (event) => {
-        event.preventDefault();
+        const handleSearch = () => {
+        
         setUserNameError("");
         setSearchError("");
        
@@ -49,12 +54,6 @@ function UserHistory(){
       
       return(
         <div className="history">
-        <br />
-      {!searchPerformed && (
-        <button className="btn btn-primary button" onClick={handleSearch}>
-          Show User history
-        </button>
-      )}
           
           {searchPerformed && (
         <center>

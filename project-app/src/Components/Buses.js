@@ -1,32 +1,46 @@
-import { useState } from "react";
-function Buses(){
-    const [busList,setBusList]=useState([])
-    const [searchPerformed,setSearchPerformed]=useState(false);
-    var getbuses = ()=>{
-        fetch('http://localhost:5041/api/bus',{
-            method:'GET',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json',
-               'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
-        }).then(
-            async (data)=>{
-                var myData = await data.json();
-                await console.log(myData);
-                await setBusList(myData);
-                await setSearchPerformed(true);
-            }
-        ).catch((e)=>{
-            console.log(e)
-        })
-    }
-    var checkBuses = busList.length>0?true:false;
-return(
+import React, { useState, useEffect } from "react";
+
+function Buses() {
+  const [busList, setBusList] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
+
+  useEffect(() => {
+    // Fetch buses when the component is mounted
+    getBuses();
+  }, []); // Empty dependency array ensures this effect runs once when mounted
+
+  var getBuses = () => {
+    fetch("http://localhost:5041/api/bus", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then(async (data) => {
+        var myData = await data.json();
+        console.log(myData);
+        await setBusList(myData);
+        await setSearchPerformed(true);
+        var Id = data.Id;
+        localStorage.setItem("Id", Id);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  var checkBuses = busList.length > 0 ? true : false;
+
+  return (
     <div>
-        <center><h1 className="alert alert-success"><center>Buses</center></h1></center>
-        <center><button className="btn btn-success" onClick={getbuses}>Get All Buses</button></center>
-        {searchPerformed && (
+      <center>
+        <h1 className="alert alert-success">
+          <center>Buses</center>
+        </h1>
+      </center>
+      {searchPerformed && (
         <div>
           <center>
             <table className="table">
@@ -60,9 +74,8 @@ return(
           </center>
         </div>
       )}
-
     </div>
-);
+  );
 }
-export default Buses; 
- 
+
+export default Buses;

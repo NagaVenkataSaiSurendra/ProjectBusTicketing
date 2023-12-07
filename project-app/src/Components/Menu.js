@@ -33,14 +33,19 @@ function Menu() {
               <Link className="nav-link" to="/BookingList">Bookings</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/BookingList">Bookings</Link>
-            </li> <li className="nav-item">
+              <Link className="nav-link" to="/addBus">AddBus</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/UpdateBus">UpdateBus</Link>
+            </li>
+             <li className="nav-item">
               <Link className="nav-link" to="/Logout">Logout</Link>
             </li>
+            
           </ul>
         </div>
         <div className="ml-auto">
-          <Link className="nav-link" to="/">Register/Login</Link>
+          <Link className="nav-link" to="/UserLogin">Register/Login</Link>
         </div>
       </nav>
     </div>

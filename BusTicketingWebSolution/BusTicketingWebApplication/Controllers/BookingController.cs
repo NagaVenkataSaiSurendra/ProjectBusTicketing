@@ -25,7 +25,7 @@ namespace BusTicketingWebApplication.Controllers
             _bookedSeatService= bookedSeatService;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public ActionResult Create(BookingDTO bookingDTO)
         {
@@ -45,7 +45,7 @@ namespace BusTicketingWebApplication.Controllers
             return BadRequest(errorMessage);
         }
 
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult GetAllBookings()
         {

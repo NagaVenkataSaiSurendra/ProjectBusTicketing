@@ -39,11 +39,33 @@ namespace BusTicketingWebApplication.Migrations
                     b.Property<float>("Cost")
                         .HasColumnType("real");
 
+                    b.Property<int>("DriverAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DriverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DriverPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("DriverRating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("End")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Start")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

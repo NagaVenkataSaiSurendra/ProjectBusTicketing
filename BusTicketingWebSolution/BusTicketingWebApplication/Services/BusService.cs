@@ -61,5 +61,11 @@ namespace BusTicketingWebApplication.Services
             }
             return null;
         }
+        public Bus GetBusById(BusIdDTO busIdDTO)
+        {
+
+            var result = _busRepository.GetById(busIdDTO.Id);
+            return result;
+        }
     }
 }

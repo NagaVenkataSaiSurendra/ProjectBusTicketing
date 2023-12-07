@@ -24,7 +24,7 @@ namespace BusTicketingWebApplication.Controllers
             _busService = busService;
             _logger = logger;
         }
-       [Authorize]
+       [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult GetAllBusses()
         {
@@ -42,7 +42,7 @@ namespace BusTicketingWebApplication.Controllers
             }
             return BadRequest(errorMessage);
         }
-     // [Authorize(Roles = "Admin")]
+      [Authorize(Roles = "Admin")]
       [HttpPost]
         public ActionResult Create(Bus bus)
         {
@@ -62,7 +62,7 @@ namespace BusTicketingWebApplication.Controllers
         }
 
 
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("DeleteBus")]
         [HttpDelete]
         public ActionResult DeleteBus(BusIdDTO busIdDTO)
@@ -82,7 +82,7 @@ namespace BusTicketingWebApplication.Controllers
             return BadRequest(errorMessage);
         }
 
-      //  [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("UpdateBus")]
         [HttpPut]
         public ActionResult UpdateBus(BusDTO busDTO)
@@ -101,7 +101,25 @@ namespace BusTicketingWebApplication.Controllers
             }
             return BadRequest(errorMessage);
         }
+        [HttpPost]
+        [Route("GetBusById")]
+        public ActionResult GetBusById(BusIdDTO busIdDTO)
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _busService.GetBusById(busIdDTO);
+                _logger.LogInformation("Busses listed");
 
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+                _logger.LogError("Error Occured,Product not listed");
+            }
+            return BadRequest(errorMessage);
+        }
 
     }
 

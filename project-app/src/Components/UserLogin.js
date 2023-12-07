@@ -8,6 +8,7 @@ function UserLogin(){
     var [role,setRole] = useState("");
     const [thisUserName, setThisUserName] = useState(null);
     const [thisToken, setThisToken] = useState(null);
+    const [thisCost, setThisCost] = useState(null);
     var [usernameError,setUsernameError]=useState("");
     var checkUSerData = ()=>{
         if(username=='')
@@ -49,6 +50,9 @@ function UserLogin(){
         localStorage.setItem('thisUserName', username);
         var token =userData.data.token;
         localStorage.setItem("token",token); 
+        var cost=userData.data.cost;
+        localStorage.setItem("cost",cost);
+
         
         
     })
@@ -73,6 +77,9 @@ return(
             <button className="btn btn-primary button" onClick={logIn}>Login</button>
             
             <button className="btn btn-danger button">Cancel</button>
+            <div class="container signin">
+    <p>New User? Register Here <a href="/">Register</a>.</p>
+  </div>
         </form>
     );
 }
