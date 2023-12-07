@@ -5,6 +5,7 @@ using BusTicketingWebApplication.Models.DTOs;
 using System.Linq;
 using System.Net.Mail;
 using System.Net;
+using System.Collections.Generic;
 
 namespace BusTicketingWebApplication.Services
 {
@@ -92,8 +93,8 @@ namespace BusTicketingWebApplication.Services
             //{
                 // Your email sending logic here
                 string to = booking.Email;
-                string subject = "Event Scheduled Email";
-                string body = ($"Dear Sir/Madam \n !!! \nYour Bus Tickets are Booked!! \n Have a Safe and Happy Journey!!");
+                string subject = "Bus Ticket Booking Confirmation Email";
+                string body = ($"Dear {booking.UserName}, \n  \n \t\t\t\t\tYour Bus Tickets with Seat Numbers {string.Join(",",booking.SelectedSeats)} are Confirmed!! \n Have a Safe and Happy Journey!!");
 
                 SendNotificationEmail(to, subject, body);
             //}, null, delayMilliseconds, Timeout.Infinite);
@@ -152,7 +153,7 @@ namespace BusTicketingWebApplication.Services
 
                 return true; // Sharing successful
             }
-            return false; // Event not found
+            return false; // Booking not found
         }
         /// <summary>
         /// List of all created events

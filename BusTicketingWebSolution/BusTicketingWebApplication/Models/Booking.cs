@@ -13,7 +13,7 @@ namespace BusTicketingWebApplication.Models
         
         public float TotalFare { get; set; }
         public List<int> SelectedSeats { get; set; }
-        public DateTime NotificationDateTime { get; set; }
+       
         public string? Email { get; set; }
 
         //public string? SrartTime  { get; set; }

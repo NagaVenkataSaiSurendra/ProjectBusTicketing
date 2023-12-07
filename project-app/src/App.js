@@ -33,7 +33,7 @@ function App() {
         <Route path="Buses" element={<Protected><Buses /></Protected>} />
         <Route path="BusSeatSelection" element={<Protected><BusSeatSelection /></Protected>} />
         <Route path="UpdateUser" element={<UpdateUser />} />
-        <Route path="UserHistory" element={<UserHistory />} />
+        <Route path="UserHistory" element={<Protected><UserHistory /></Protected>} />
         <Route path="Users" element={<Protected><Users/></Protected>} />
         <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
         <Route path="RedBus" element={<RedBus />} />
