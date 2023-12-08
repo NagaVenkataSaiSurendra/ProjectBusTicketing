@@ -37,6 +37,7 @@ namespace BusTicketingWebApplication.Services
                 }
                 userDTO.Token = _tokenService.GetToken(userDTO);
                 userDTO.Password = "";
+                userDTO.Email = user.Email;
                 return userDTO;
             }
             return null;

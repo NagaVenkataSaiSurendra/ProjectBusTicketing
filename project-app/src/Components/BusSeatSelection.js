@@ -10,7 +10,7 @@ const BusSeatSelection = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
-
+  const thisEmail=localStorage.getItem('email');
   const thisBus = localStorage.getItem('thisBus');
   const thisDate = localStorage.getItem('thisDate');
   const thisUserName = localStorage.getItem('thisUserName');
@@ -25,6 +25,8 @@ const BusSeatSelection = () => {
       },
       body: JSON.stringify({
         id: thisBus, 
+        userName:thisUserName,
+        email:thisEmail
       }),
     })
       .then((response) => {
@@ -75,6 +77,7 @@ const handleBookClick = () => {
       userName: thisUserName, 
       selectedSeats: selectedSeats,
       date: thisDate, 
+      email:thisEmail,
     }),
   })
     .then((response) => {
@@ -92,7 +95,7 @@ const handleBookClick = () => {
       // You may want to reset the selected seats state or perform other actions here
       setSelectedSeats([]);
       setIsBooked(true);
-      alert('Booking successful!');
+      alert('Booking successfull.\nPlease check your Email!!');
     })
     .catch((error) => console.error('Error booking seats:', error));
 };

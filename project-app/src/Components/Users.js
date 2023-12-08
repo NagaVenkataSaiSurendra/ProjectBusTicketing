@@ -23,6 +23,8 @@ function Users() {
         await console.log(myData);
         await setUserList(myData);
         await setSearchPerformed("true");
+        var email=myData.email;
+        localStorage.setItem("email",email)
     }
 ).catch((e)=>{
     console.log(e)

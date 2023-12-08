@@ -9,6 +9,7 @@ function UserLogin(){
     const [thisUserName, setThisUserName] = useState(null);
     const [thisToken, setThisToken] = useState(null);
     const [thisCost, setThisCost] = useState(null);
+    const [thisEmail,setThisEmail]=useState(null);
     var [usernameError,setUsernameError]=useState("");
     var checkUSerData = ()=>{
         if(username=='')
@@ -52,6 +53,8 @@ function UserLogin(){
         localStorage.setItem("token",token); 
         var cost=userData.data.cost;
         localStorage.setItem("cost",cost);
+        var email=userData.data.email;
+        localStorage.setItem("email",email);
 
         
         

@@ -85,19 +85,14 @@ namespace BusTicketingWebApplication.Services
         }
         public void ScheduleAndSendEmail( Booking booking)
         {
-            // Calculate the delay until the target time
-            //int delayMilliseconds = (int)(targetTime - DateTime.Now).TotalMilliseconds;
-
-            //// Create a Timer with a callback function that sends the email
-            //Timer timer = new Timer(state =>
-            //{
+           
                 // Your email sending logic here
                 string to = booking.Email;
                 string subject = "Bus Ticket Booking Confirmation Email";
                 string body = ($"Dear {booking.UserName}, \n  \n \t\t\t\t\tYour Bus Tickets with Seat Numbers {string.Join(",",booking.SelectedSeats)} are Confirmed!! \n Have a Safe and Happy Journey!!");
 
                 SendNotificationEmail(to, subject, body);
-            //}, null, delayMilliseconds, Timeout.Infinite);
+            
         }
         public void SendNotificationEmail(string recipientEmail, string subject, string body)
         {
@@ -132,7 +127,7 @@ namespace BusTicketingWebApplication.Services
         /// <summary>
         /// Share an event with specified email addresses
         /// </summary>
-        /// <param name="eventId">The id of the event to be shared</param>
+        /// <param name="BookingId">The id of the booking to be shared</param>
         /// <param name="recipientEmails">List of recipient emails</param>
         /// <returns>True if sharing is successful, false otherwise</returns>
         public bool ShareEvent(int bookingId, List<string> recipientEmails)
