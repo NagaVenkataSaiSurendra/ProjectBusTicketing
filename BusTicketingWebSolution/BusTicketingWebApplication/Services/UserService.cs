@@ -23,6 +23,14 @@ namespace BusTicketingWebApplication.Services
             _busrepository = busrepository;
             _bookingRepository = bookingRepository;
         }
+        public UserService(IUserRepository userrepository,  ITokenService tokenService)
+        {
+            _userrepository = userrepository;
+           
+            _tokenService = tokenService;
+            
+        }
+
         public UserDTO Login(UserDTO userDTO)
         {
             var user = _userrepository.GetById(userDTO.UserName);

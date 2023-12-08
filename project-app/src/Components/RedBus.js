@@ -165,7 +165,7 @@ function RedBus() {
                     <td>{bus.end}</td>
                     <td>{selectedDate}</td>
                     <td>{bus.availableSeats}</td>
-                    <td>{bus.cost}</td>
+                    <td>₹{bus.cost}/-</td>
                     <td>
                       <center>
                         <button

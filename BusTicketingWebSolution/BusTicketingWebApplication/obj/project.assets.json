@@ -1317,11 +1317,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/6.0.24": {
+      "Microsoft.EntityFrameworkCore/6.0.25": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.24",
-          "Microsoft.EntityFrameworkCore.Analyzers": "6.0.24",
+          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.25",
+          "Microsoft.EntityFrameworkCore.Analyzers": "6.0.25",
           "Microsoft.Extensions.Caching.Memory": "6.0.1",
           "Microsoft.Extensions.DependencyInjection": "6.0.1",
           "Microsoft.Extensions.Logging": "6.0.0",
@@ -1342,7 +1342,7 @@
           "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/6.0.24": {
+      "Microsoft.EntityFrameworkCore.Abstractions/6.0.25": {
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
@@ -1355,7 +1355,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/6.0.24": {
+      "Microsoft.EntityFrameworkCore.Analyzers/6.0.25": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -1382,6 +1382,22 @@
         },
         "build": {
           "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/6.0.25": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.25"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/6.0.24": {
@@ -5580,10 +5596,10 @@
         "microsoft.dotnet.scaffolding.shared.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore/6.0.24": {
-      "sha512": "7eKAnhLfdME3c/dcpFFCpyBS5EPe4Id89TkIttX57249eHt00W/i9wd6E+f8mPDHTleNFKxRnfY58rgj5ZVE/g==",
+    "Microsoft.EntityFrameworkCore/6.0.25": {
+      "sha512": "txcqw2xrmvMoTIgzAdUk8JHLELofGgTK3i6glswVZs4SC8BOU1M/iSAtwMIVtAtfzxuBIUAbHPx+Ly6lfkYe7g==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/6.0.24",
+      "path": "microsoft.entityframeworkcore/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5591,35 +5607,35 @@
         "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.6.0.24.nupkg.sha512",
+        "microsoft.entityframeworkcore.6.0.25.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/6.0.24": {
-      "sha512": "k0dAkxV8AnhPdFin5bJlCR1XXFVKOQzyhK+bTGMZYDqPjSwILnAUNZc3K1Ys+awu36AOmlmPwexnWY1q15CZcw==",
+    "Microsoft.EntityFrameworkCore.Abstractions/6.0.25": {
+      "sha512": "DalO25C96LsIfAPlyizyun9y1XrIquRugPEGXC8+z7dFo+GyU0LRd0R11JDd3rJWjR18NOFYwqNenjyDpNRO3A==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/6.0.24",
+      "path": "microsoft.entityframeworkcore.abstractions/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.6.0.24.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.6.0.25.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/6.0.24": {
-      "sha512": "941xC/EKIPGUcQXt+EEgNlCxD56X9p4lux4jdhDkuWiwKb1Lcw8XwxczDdNxBTJ2qGge7XgsVUsCZ6o9j8LdVw==",
+    "Microsoft.EntityFrameworkCore.Analyzers/6.0.25": {
+      "sha512": "i6UpdWqWxSBbIFOkaMoubM40yIjTZO+0rIUkY5JRltSeFI4PzncBBQcNVNXXjAmiLXF/xY0xTS+ykClbkV46Yg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/6.0.24",
+      "path": "microsoft.entityframeworkcore.analyzers/6.0.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.6.0.24.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.6.0.25.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
@@ -5636,6 +5652,20 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.6.0.24.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/6.0.25": {
+      "sha512": "T1wFaHL0WS51PlrSzWfBX2qppMbuIserPUaSwrw6Uhvg4WllsQPKYqFGAZC9bbUAihjgY5es7MIgSEtXYNdLiw==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/6.0.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.6.0.25.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/6.0.24": {
@@ -11440,6 +11470,7 @@
     "net6.0": [
       "MailKit >= 4.3.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.24",
+      "Microsoft.EntityFrameworkCore.InMemory >= 6.0.25",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.24",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.24",
       "Microsoft.Extensions.Logging.Log4Net.AspNetCore >= 6.1.0",
@@ -11493,6 +11524,10 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[6.0.24, )"
+          },
+          "Microsoft.EntityFrameworkCore.InMemory": {
+            "target": "Package",
+            "version": "[6.0.25, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",

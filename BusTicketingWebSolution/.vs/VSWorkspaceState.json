@@ -7,8 +7,9 @@
     "\\BusTicketingWebApplication\\Models",
     "\\BusTicketingWebApplication\\Models\\DTOs",
     "\\BusTicketingWebApplication\\Repositories",
-    "\\BusTicketingWebApplication\\Services"
+    "\\BusTicketingWebApplication\\Services",
+    "\\EBusTicketingTest"
   ],
-  "SelectedNode": "\\BusTicketingWebApplication\\Services\\BookingService.cs",
+  "SelectedNode": "\\EBusTicketingTest\\UserServiceTest.cs",
   "PreviewInSolutionExplorer": false
 }
