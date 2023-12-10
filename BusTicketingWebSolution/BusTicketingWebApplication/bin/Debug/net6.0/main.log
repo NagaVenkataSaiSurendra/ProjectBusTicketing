@@ -17087,3 +17087,1225 @@ FROM [BookedSeats] AS [b]
 SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
 FROM [BookedSeats] AS [b]
 2023-12-10 22:05:44,349 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.BookingController.BookedSeats[116] - Booked Seats in the bus fetched
+2023-12-10 23:37:42,736 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-10 23:37:43,081 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-10 23:37:43,096 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-10 23:37:43,102 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-10 23:39:25,651 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:39:25,987 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:39:25,995 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:39:26,456 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:39:33,155 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (634ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:39:33,504 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (96ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:39:33,549 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:39:33,998 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (66ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-10 23:39:34,199 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (54ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:39:34,275 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:39:35,516 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:40:04,409 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:40:04,437 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:40:04,451 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:40:04,462 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:40:04,478 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-10 23:40:04,501 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:40:04,529 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:40:04,713 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:40:38,132 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:40:38,380 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (237ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:40:38,405 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:40:38,411 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:40:38,430 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:40:38,619 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (159ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:40:38,644 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (15ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:40:38,664 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:40:38,870 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:41:21,734 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:41:22,042 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (299ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:41:22,078 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:41:22,087 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:41:22,103 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-10 23:41:22,147 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (31ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:41:22,163 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:41:22,274 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:42:02,984 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:42:03,335 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (339ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:42:03,434 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:42:03,440 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:42:03,472 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-10 23:42:03,719 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (237ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:42:03,741 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e8083b01-011b-4b03-8152-6667c35669b0
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:42:04,004 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:45:29,788 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-10 23:45:30,553 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-10 23:45:30,588 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-10 23:45:30,597 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-10 23:46:36,324 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:46:36,630 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:46:36,637 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:46:37,129 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:46:42,863 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (545ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:46:43,283 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (129ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:46:43,327 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:46:43,992 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (324ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-10 23:46:44,291 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (156ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:46:44,388 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:46:45,125 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:47:13,559 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:47:13,576 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:47:13,587 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:47:13,600 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:47:13,625 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:47:13,949 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (252ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:47:13,968 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:47:13,995 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:47:14,298 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:47:40,726 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:47:40,735 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:47:40,740 [.NET ThreadPool Worker] INFO BookingController.BookedSeatsList[101] - Booking done
+2023-12-10 23:48:16,280 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:48:16,732 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (334ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:48:16,833 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:48:16,851 [.NET ThreadPool Worker] INFO BookingController.BookedSeats[122] - Booked Seats in the bus fetched
+2023-12-10 23:48:47,565 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:48:47,886 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (312ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:48:47,907 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:48:47,914 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:48:47,923 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:48:48,058 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (105ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:48:48,392 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (313ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:48:48,432 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:a91bed51-6540-43df-b63f-76cc2b3e8c54
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:48:48,621 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:54:00,472 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-10 23:54:01,388 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-10 23:54:01,414 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-10 23:54:01,424 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-10 23:55:15,751 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:55:16,025 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:55:16,035 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-10 23:55:17,247 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:55:21,854 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (420ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:22,258 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (116ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:22,317 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:22,398 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:23,005 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (326ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:55:23,381 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (133ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:55:23,490 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:55:24,381 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:55:44,563 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:55:44,586 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:44,599 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:44,609 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:44,624 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:44,640 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (10ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:55:44,656 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:55:44,675 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:55:44,836 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:55:59,888 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-10 23:55:59,931 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (4ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:59,941 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:59,951 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-10 23:55:59,957 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-10 23:55:59,969 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-10 23:55:59,994 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-10 23:56:00,012 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:727e30a3-a7a1-4174-9130-a131cdd1585d
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-10 23:56:00,176 [.NET ThreadPool Worker] ERROR BookingController.Create[36] - Booking is not Added!!
+2023-12-10 23:58:34,114 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-10 23:58:34,709 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-10 23:58:34,724 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-10 23:58:34,731 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:01:26,761 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:01:27,201 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:01:27,219 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:01:27,961 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:01:32,809 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (288ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:02:58,902 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (649ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:03:06,610 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:06:08,000 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (340ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-11 00:06:53,484 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Database.Command.?[?] - Failed executing DbCommand (132ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BookingId], [BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [BookedSeatId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookedSeatId] = scope_identity();
+2023-12-11 00:06:54,089 [.NET ThreadPool Worker] ERROR Microsoft.EntityFrameworkCore.Update.?[?] - An exception occurred in the database while saving changes for context type 'BusTicketingWebApplication.Contexts.TicketingContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e2a7f825-b079-4df7-9564-6c891db75bd6
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'BookedSeatId'.
+Invalid column name 'BookedSeatId'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:e2a7f825-b079-4df7-9564-6c891db75bd6
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2023-12-11 00:09:24,161 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-11 00:09:27,293 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-11 00:09:27,322 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-11 00:09:27,326 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:10:49,418 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:10:50,373 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:10:50,396 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:10:51,010 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:10:59,157 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (982ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:10:59,626 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (140ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:10:59,732 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (41ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:11:00,476 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (392ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-11 00:11:00,673 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Single), @p5='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-11 00:11:00,689 [.NET ThreadPool Worker] INFO BookingController.Create[37] - Bookings are Added!!
+2023-12-11 00:14:09,306 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-11 00:14:09,951 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-11 00:14:10,003 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-11 00:14:10,007 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:16:31,069 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:16:31,416 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:16:31,439 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:16:31,944 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:16:52,858 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (242ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:16:53,225 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (114ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:16:53,267 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:16:53,681 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (132ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-11 00:16:53,832 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Single), @p5='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-11 00:16:54,442 [.NET ThreadPool Worker] INFO BookingController.Create[37] - Bookings are Added!!
+2023-12-11 00:20:42,757 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-11 00:20:42,983 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-11 00:20:43,013 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-11 00:20:43,023 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:22:07,859 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:22:08,091 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:22:08,099 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:22:08,656 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:22:13,649 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (222ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:22:14,012 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (77ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:22:14,041 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:22:14,095 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (13ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:22:14,581 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (252ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [BookedSeats] SET [AvailableSeats] = @p0, [BookedSeatCount] = @p1, [BookedSeats] = @p2, [BusId] = @p3, [Date] = @p4
+WHERE [Id] = @p5;
+SELECT @@ROWCOUNT;
+2023-12-11 00:22:14,798 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (85ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Single), @p5='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-11 00:22:15,537 [.NET ThreadPool Worker] INFO BookingController.Create[37] - Bookings are Added!!
+2023-12-11 00:24:05,428 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:24:05,499 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (32ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-11 00:24:10,118 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.Login[62] - Customers are Logged In!!
+2023-12-11 00:24:36,171 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:24:36,195 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-11 00:24:36,213 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-11 00:24:36,231 [.NET ThreadPool Worker] INFO BookingController.GetAllBookings[58] - Bookings listed
+2023-12-11 00:32:42,314 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-11 00:32:43,302 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-11 00:32:43,331 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-11 00:32:43,338 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:34:42,012 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:34:42,378 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:34:42,387 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:34:42,768 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:34:48,069 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1,259ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:34:49,325 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (553ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:34:49,388 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:34:49,917 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (198ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-11 00:34:50,155 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (56ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Single), @p5='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-11 00:34:56,435 [.NET ThreadPool Worker] INFO BookingController.Create[37] - Bookings are Added!!
+2023-12-11 00:35:57,424 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:35:57,834 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (70ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[Id], [b].[Cost], [b].[DriverAge], [b].[DriverName], [b].[DriverPhone], [b].[DriverRating], [b].[Duration], [b].[End], [b].[Start], [b].[StartTime], [b].[Type]
+FROM [Buses] AS [b]
+WHERE [b].[Id] = @__key_0
+2023-12-11 00:35:57,922 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:35:57,931 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:35:58,026 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [BookedSeats] ([AvailableSeats], [BookedSeatCount], [BookedSeats], [BusId], [Date])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [BookedSeats]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-12-11 00:35:58,093 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Single), @p5='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Bookings] ([BusId], [Date], [Email], [SelectedSeats], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [BookingId]
+FROM [Bookings]
+WHERE @@ROWCOUNT = 1 AND [BookingId] = scope_identity();
+2023-12-11 00:36:01,548 [.NET ThreadPool Worker] INFO BookingController.Create[37] - Bookings are Added!!
+2023-12-11 00:47:07,522 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5041
+2023-12-11 00:47:10,501 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-12-11 00:47:10,541 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-12-11 00:47:10,546 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: D:\hexaware\bus\BusTicketingWebSolution\BusTicketingWebApplication\
+2023-12-11 00:48:51,631 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'BookedSeat.BookedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:48:51,912 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'Booking.SelectedSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:48:51,919 [.NET ThreadPool Worker] WARN Microsoft.EntityFrameworkCore.Model.Validation.?[?] - The property 'CancelledBooking.CancelledSeats' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2023-12-11 00:48:52,478 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:49:00,861 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (664ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__key_0
+2023-12-11 00:49:01,618 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.Login[62] - Customers are Logged In!!
+2023-12-11 00:49:52,425 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:49:52,703 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (148ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-11 00:49:52,790 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-11 00:49:52,921 [.NET ThreadPool Worker] INFO BookingController.GetAllBookings[58] - Bookings listed
+2023-12-11 00:50:10,160 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:50:10,222 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (10ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+WHERE [b].[BookingId] = @__key_0
+2023-12-11 00:50:11,170 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (167ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Single), @p6='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [CancelledBookings] ([BookingId], [BusId], [CancelledDate], [CancelledSeats], [Date], [TotalFare], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [CancellationId]
+FROM [CancelledBookings]
+WHERE @@ROWCOUNT = 1 AND [CancellationId] = scope_identity();
+2023-12-11 00:50:11,296 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (3ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+WHERE [b].[BookingId] = @__key_0
+2023-12-11 00:50:11,545 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (220ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Bookings]
+WHERE [BookingId] = @p0;
+SELECT @@ROWCOUNT;
+2023-12-11 00:50:11,612 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:50:11,641 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:50:11,670 [.NET ThreadPool Worker] INFO BookingController.DeleteBooking[80] - Bookings are Deleted!!
+2023-12-11 00:50:21,513 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:50:21,534 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-11 00:50:21,550 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-11 00:50:21,556 [.NET ThreadPool Worker] INFO BookingController.GetAllBookings[58] - Bookings listed
+2023-12-11 00:51:33,931 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:51:33,942 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:51:33,950 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:51:33,961 [.NET ThreadPool Worker] INFO BookingController.BookedSeats[122] - Booked Seats in the bus fetched
+2023-12-11 00:52:38,656 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:52:38,708 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Bookings] AS [b]
+2023-12-11 00:52:38,719 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+2023-12-11 00:52:38,728 [.NET ThreadPool Worker] INFO BookingController.GetAllBookings[58] - Bookings listed
+2023-12-11 00:53:43,502 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:53:43,520 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:53:43,537 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:53:43,545 [.NET ThreadPool Worker] INFO BookingController.BookedSeats[122] - Booked Seats in the bus fetched
+2023-12-11 00:55:19,408 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:55:19,434 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [BookedSeats] AS [b]
+2023-12-11 00:55:19,459 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [b].[Id], [b].[AvailableSeats], [b].[BookedSeatCount], [b].[BookedSeats], [b].[BusId], [b].[Date]
+FROM [BookedSeats] AS [b]
+2023-12-11 00:55:19,481 [.NET ThreadPool Worker] INFO BookingController.BookedSeats[122] - Booked Seats in the bus fetched
+2023-12-11 00:56:54,026 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.25 initialized 'TicketingContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-12-11 00:56:54,417 [.NET ThreadPool Worker] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (281ms) [Parameters=[@__key_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [b].[BookingId], [b].[BusId], [b].[Date], [b].[Email], [b].[SelectedSeats], [b].[TotalFare], [b].[UserName]
+FROM [Bookings] AS [b]
+WHERE [b].[BookingId] = @__key_0
+2023-12-11 00:56:54,432 [.NET ThreadPool Worker] INFO BookingController.DeleteBooking[80] - Bookings are Deleted!!

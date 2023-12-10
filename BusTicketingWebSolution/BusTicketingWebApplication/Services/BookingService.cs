@@ -29,36 +29,28 @@ namespace BusTicketingWebApplication.Services
             _bookedSeatRepository = bookedSeatRepository;
             _cancelledBookingRepository = cancelledBookingRepository;
         }
-
-        // Method to add a new booking
         public BookingDTO Add(BookingDTO bookingDTO)
         {
-            // Check if the provided bus ID is valid
             var bus = _busRepository.GetById(bookingDTO.BusId);
             if (bookingDTO.SelectedSeats.Count <= 0 || bookingDTO.SelectedSeats.Count > 40)
                 throw new InvalidNoOfTicketsEnteredException();
 
             if (bus != null)
             {
-                // Calculate fare based on bus cost
                 float Fare = bus.Cost;
 
-                // Check if selected seats are not null
                 if (bookingDTO.SelectedSeats != null)
                 {
-                    // Get all booked seats for the specified bus and date
                     var AllBookedSeats = _bookedSeatRepository.GetAll();
 
                     if (AllBookedSeats != null)
                     {
                         bool status = false;
 
-                        // Loop through existing booked seats
                         foreach (var bookedSeat in AllBookedSeats)
                         {
-                            if (bookedSeat.BusId == bookingDTO.BusId && bookedSeat.Date == bookingDTO.Date)
+                            if (bookedSeat.Date == bookingDTO.Date && bookedSeat.BusId == bookingDTO.BusId)
                             {
-                                // Update existing booked seats
                                 bookedSeat.BookedSeats.AddRange(bookingDTO.SelectedSeats);
                                 bookedSeat.AvailableSeats -= bookingDTO.SelectedSeats.Count;
                                 bookedSeat.BookedSeatCount += bookingDTO.SelectedSeats.Count;
@@ -71,7 +63,6 @@ namespace BusTicketingWebApplication.Services
 
                         if (!status)
                         {
-                            // Add new booked seats if not found
                             BookedSeat newBookedSeat = new BookedSeat
                             {
                                 BusId = bus.Id,
@@ -86,7 +77,7 @@ namespace BusTicketingWebApplication.Services
                     }
                     else
                     {
-                        // If no booked seats found, create a new BookedSeat
+                        // If AllBookedSeats is null, create a new BookedSeat
                         BookedSeat newBookedSeat = new BookedSeat
                         {
                             BusId = bus.Id,
@@ -99,20 +90,17 @@ namespace BusTicketingWebApplication.Services
                         _bookedSeatRepository.Add(newBookedSeat);
                     }
 
-                    // Create a new Booking object
                     Booking booking = new Booking
                     {
                         UserName = bookingDTO.UserName,
                         BusId = bookingDTO.BusId,
                         Date = bookingDTO.Date,
+                        Email=bookingDTO.Email,
                         SelectedSeats = bookingDTO.SelectedSeats,
                         TotalFare = bookingDTO.SelectedSeats.Count * Fare
                     };
 
-                    // Add the new booking
                     var result = _bookingRepository.Add(booking);
-
-                    // Schedule and send booking confirmation email
                     ScheduleAndSendEmail(result);
                 }
             }
@@ -124,7 +112,9 @@ namespace BusTicketingWebApplication.Services
             return bookingDTO;
         }
 
-        // Method to schedule and send a booking confirmation email
+
+
+       // Method to schedule and send a booking confirmation email
         public void ScheduleAndSendEmail(Booking booking)
         {
             // Your email sending logic here
@@ -223,9 +213,9 @@ namespace BusTicketingWebApplication.Services
 
 
 
-        public BookedSeatsDTO RemoveBooking(BookedSeatsDTO bookedSeatsDTO)
+        public BookingIdDTO RemoveBooking(BookingIdDTO bookingIdDTO)
         {
-            var BookingToBeRemoved = _bookingRepository.GetById(bookedSeatsDTO.BusId);
+            var BookingToBeRemoved = _bookingRepository.GetById(bookingIdDTO.Id);
             if (BookingToBeRemoved != null)
             {
                 CancelledBooking cancelledBooking = new CancelledBooking();
@@ -238,30 +228,25 @@ namespace BusTicketingWebApplication.Services
                 cancelledBooking.CancelledDate = DateTime.Now;
                 _cancelledBookingRepository.Add(cancelledBooking);
 
-                var result = _bookingRepository.Delete(bookedSeatsDTO.BusId);
+                var result = _bookingRepository.Delete(bookingIdDTO.Id);
                 if (result != null)
                 {
-                    var bus = _busRepository.GetById(BookingToBeRemoved.BusId);
-
 
                     var AllBookedSeats = _bookedSeatRepository.GetAll();
                     if (AllBookedSeats != null)
                     {
-                        for (int i = 0; i < AllBookedSeats.Count; i++)
+                        foreach (var bookedSeat in AllBookedSeats)
                         {
-                            if (AllBookedSeats[i].Id == bookedSeatsDTO.BusId)
+                            if (bookedSeat.Date == BookingToBeRemoved.Date && bookedSeat.BusId == BookingToBeRemoved.BusId)
                             {
-                                if (AllBookedSeats[i].Date == bookedSeatsDTO.Date)
-                                {
-                                    AllBookedSeats[i].BookedSeats.RemoveAll(seat => BookingToBeRemoved.SelectedSeats.Contains(seat));
-                                    AllBookedSeats[i].AvailableSeats += BookingToBeRemoved.SelectedSeats.Count;
-                                    AllBookedSeats[i].BookedSeatCount -= BookingToBeRemoved.SelectedSeats.Count;
+                                bookedSeat.BookedSeats.RemoveAll(seat => BookingToBeRemoved.SelectedSeats.Contains(seat));
+                                bookedSeat.AvailableSeats += BookingToBeRemoved.SelectedSeats.Count;
+                                bookedSeat.BookedSeatCount -= BookingToBeRemoved.SelectedSeats.Count;
 
-                                    _bookedSeatRepository.Update(AllBookedSeats[i]);
+                                _bookedSeatRepository.Update(bookedSeat);
 
-                                }
+                                break;
                             }
-
                         }
                     }
 
@@ -270,11 +255,12 @@ namespace BusTicketingWebApplication.Services
                     //bookedBusSeats.BookedSeats.RemoveAll(seat => BookingToBeRemoved.SelectedSeats.Contains(seat));
 
                     // _bookedSeatRepository.Update(bookedBusSeats);
-                    return bookedSeatsDTO;
+                    return bookingIdDTO;
                 }
             }
             return null;
         }
+
+
     }
 }
-
