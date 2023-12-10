@@ -1,0 +1,81 @@
+/* Menu.css */
+
+/* Top bar styles */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #d0dae3;
+  }
+  
+  .top-bar .nav-link {
+    color: rgb(16, 16, 164);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    
+  }
+  
+  .top-bar .nav-link:hover {
+    background-color: #e3e9ef; /* Change the background color on hover */
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #e2e7ed;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin-right: 15px;
+  }
+  
+  .nav-link {
+    color: #0f0f0f;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .nav-link:hover {
+    background-color: #34495e; /* Change the background color on hover */
+  }
+  
+  /* Icon styles */
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  /* Main container styles */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  body {
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    font-family: 'Arial', sans-serif; /* Change to your preferred font */
+    background-image: url('file:///C:/Users/SURENDRA/Downloads/bus.jpg'); /* Add the path to your image file */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Fixed background image */
+    background-position: center center; /* Center the background image */
+}
+
+ 
+.hidden {
+    display: none;
+  }
+
+  
+  
+  

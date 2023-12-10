@@ -17,7 +17,7 @@ namespace BusTicketingWebApplication.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.24")
+                .HasAnnotation("ProductVersion", "6.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -29,12 +29,6 @@ namespace BusTicketingWebApplication.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AvailableSeats")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookedSeats")
-                        .HasColumnType("int");
 
                     b.Property<float>("Cost")
                         .HasColumnType("real");
@@ -86,12 +80,22 @@ namespace BusTicketingWebApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("AvailableSeats")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookedSeatCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("BookedSeats")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -114,9 +118,6 @@ namespace BusTicketingWebApplication.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("NotificationDateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("SelectedSeats")
                         .IsRequired()
@@ -156,6 +157,42 @@ namespace BusTicketingWebApplication.Migrations
                     b.HasKey("RouteId");
 
                     b.ToTable("BusRoutes");
+                });
+
+            modelBuilder.Entity("BusTicketingWebApplication.Models.CancelledBooking", b =>
+                {
+                    b.Property<int>("CancellationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CancellationId"), 1L, 1);
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BusId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CancelledDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CancelledSeats")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("TotalFare")
+                        .HasColumnType("real");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CancellationId");
+
+                    b.ToTable("CancelledBookings");
                 });
 
             modelBuilder.Entity("BusTicketingWebApplication.Models.User", b =>

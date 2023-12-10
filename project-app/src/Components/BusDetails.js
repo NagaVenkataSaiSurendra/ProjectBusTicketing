@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import './Buses.css';
 function BusDetails() {
-  const [busIdError, setBusIdError] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchError, setSearchError] = useState("");
+  const [busList, setBusList] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
-    // This will run when the component is mounted
-    fetchData();
-  }, []); // The empty dependency array ensures that it runs only once on mount
+    // Fetch buses when the component is mounted
+    getBuses();
+  }, []); // Empty dependency array ensures this effect runs once when mounted
 
-  const fetchData = () => {
-    setBusIdError("");
-    setSearchError("");
-
-    axios
-      .post("http://localhost:5041/api/Bus/GetBusById", {
-        id: 10,
+  var getBuses = () => {
+    fetch("http://localhost:5041/api/bus", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+       // Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then(async (data) => {
+        var myData = await data.json();
+        console.log(myData);
+        await setBusList(myData);
+        await setSearchPerformed(true);
+        var Id = data.Id;
+        localStorage.setItem("Id", Id);
       })
-      .then((response) => {
-        console.log(response.data);
-        setSearchResults(response.data);
-        setSearchPerformed(true);
-      })
-      
-      .catch((err) => {
-        console.error(err);
-        setSearchError("Error searching user. Please try again.");
+      .catch((e) => {
+        console.log(e);
       });
   };
+
+  var checkBuses = busList.length > 0 ? true : false;
 
   return (
     <div>
@@ -42,38 +43,35 @@ function BusDetails() {
       {searchPerformed && (
         <div>
           <center>
-            {Array.isArray(searchResults) && searchResults.length > 0 ? (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>BusId</th>
-                    <th>Type</th>
-                    <th>Cost</th>
-                    <th>Available Seats</th>
-                    <th>Booked Seats</th>
-                    <th>Start</th>
-                    <th>End</th>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>BusId</th>
+                  <th>Driver Name</th>
+                  <th>Driver Age</th>
+                  <th>Driver Phone Number</th>
+                  <th>Driver Rating</th>
+                  <th>Start</th>
+                  <th>End</th>
+                </tr>
+              </thead>
+              <tbody>
+                {busList.map((bus, index) => (
+                  <tr key={bus.busId}>
+                    <td>{index + 1}</td>
+                    <td>{bus.id}</td>
+                    <td>{bus.driverName}</td>
+                    <td>{bus.driverAge}</td>
+                    <td>{bus.driverPhone}</td>
+                    <td>{bus.driverRating}</td>
+                    
+                    <td>{bus.start}</td>
+                    <td>{bus.end}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {searchResults.map((bus, index) => (
-                    <tr key={bus.busId}>
-                      <td>{index + 1}</td>
-                      <td>{bus.id}</td>
-                      <td>{bus.type}</td>
-                      <td>{bus.cost}</td>
-                      <td>{bus.availableSeats}</td>
-                      <td>{bus.bookedSeats}</td>
-                      <td>{bus.start}</td>
-                      <td>{bus.end}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <p>No search results found.</p>
-            )}
+                ))}
+              </tbody>
+            </table>
           </center>
         </div>
       )}

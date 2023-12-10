@@ -15,29 +15,13 @@ function Menu() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/Buses">
-                <img src={bus} alt="bus" className="icon" />Buses
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/updateUser">UpdateUserDetails</Link>
-            </li>
+            
+            
             <li className="nav-item">
               <Link className="nav-link" to="/UserHistory">UserHistory</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/Users">Users</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/BookingList">Bookings</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/addBus">AddBus</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/UpdateBus">UpdateBus</Link>
-            </li>
+           
+            
              <li className="nav-item">
               <Link className="nav-link" to="/Logout">Logout</Link>
             </li>

@@ -18,12 +18,15 @@ namespace BusTicketingWebApplication
     {
         public static void Main(string[] args)
         {
+            // Create a web application builder
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+
+            // Configure Swagger for API documentation
             builder.Services.AddSwaggerGen(opt =>
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -37,21 +40,22 @@ namespace BusTicketingWebApplication
                 });
 
                 opt.AddSecurityRequirement(new OpenApiSecurityRequirement
-                 {
-                     {
-                           new OpenApiSecurityScheme
-                             {
-                                 Reference = new OpenApiReference
-                                 {
-                                     Type = ReferenceType.SecurityScheme,
-                                     Id = "Bearer"
-                                 }
-                             },
-                             new string[] {}
-
-                     }
-                 });
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
+
+            // Configure CORS for cross-origin resource sharing
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("reactApp", opts =>
@@ -60,6 +64,7 @@ namespace BusTicketingWebApplication
                 });
             });
 
+            // Configure JWT authentication
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -72,18 +77,22 @@ namespace BusTicketingWebApplication
                     };
                 });
 
+            // Configure and add the database context
             builder.Services.AddDbContext<TicketingContext>(opts =>
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
             });
 
+            // Configure Log4Net for logging
             builder.Logging.AddLog4Net();
 
+            // Add scoped services for dependency injection
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IBusRepository, BusRepository>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IBusRouteRepository, BusRouteRepository>();
             builder.Services.AddScoped<IBookedSeatRepository, BookedSeatRepository>();
+            builder.Services.AddScoped<ICancelledBookingRepository, CancelledBookingRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IBusService, BusService>();
@@ -91,8 +100,7 @@ namespace BusTicketingWebApplication
             builder.Services.AddScoped<IBusRouteService, BusRouteService>();
             builder.Services.AddScoped<IBookedSeatService, BookedSeatService>();
 
-            //builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
-
+            // Build the application
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -100,8 +108,8 @@ namespace BusTicketingWebApplication
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                //app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("reactApp");
@@ -109,10 +117,12 @@ namespace BusTicketingWebApplication
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // Map the default controller route
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            // Start the application
             app.Run();
         }
     }

@@ -19,28 +19,38 @@ import Logout from './Components/Logout';
 import AddBus from './Components/AddBus';
 import UpdateBus from './Components/UpdateBus';
 import BusDetails from './Components/BusDetails';
+import AdminMenu from './Components/AdminMenu';
+import DashBoard from './Components/DashBoard';
 
 function App() {
   return (
 
-    //<BusDetails/>
+    
     <BrowserRouter>
-      <Menu />
+    <div>
+      <DashBoard/>
       <Routes>
+      <Route path="Buses" element={<Protected><Buses /></Protected>} />
+      <Route path="addBus" element={<Protected><AddBus/></Protected>}/>
+      <Route path="updateBus" element={<Protected><UpdateBus/></Protected>}/>
+      <Route path="UpdateUser" element={<UpdateUser />} />
+      <Route path="Users" element={<Protected><Users/></Protected>} />
+      <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
+      <Route path="Logout" element={<Logout/>}/>
+     
         
         <Route path='/' element={<RegisterUser />} />
         <Route path="/UserLogin" element={<UserLogin />} />
-        <Route path="Buses" element={<Protected><Buses /></Protected>} />
+        
         <Route path="BusSeatSelection" element={<Protected><BusSeatSelection /></Protected>} />
-        <Route path="UpdateUser" element={<UpdateUser />} />
+
         <Route path="UserHistory" element={<Protected><UserHistory /></Protected>} />
-        <Route path="Users" element={<Protected><Users/></Protected>} />
-        <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
         <Route path="RedBus" element={<RedBus />} />
+        <Route path="AdminMenu" element={<Protected><AdminMenu /></Protected>} />
+        <Route path="Menu" element={<Protected><Menu /></Protected>} />
         <Route path="Logout" element={<Logout/>}/>
-        <Route path="addBus" element={<Protected><AddBus/></Protected>}/>
-        <Route path="updateBus" element={<Protected><UpdateBus/></Protected>}/>
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
