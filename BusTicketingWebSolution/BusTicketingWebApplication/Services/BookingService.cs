@@ -159,26 +159,28 @@ namespace BusTicketingWebApplication.Services
         }
 
         // Method to share booking details with specified email addresses
-        public bool ShareEvent(int bookingId, List<string> recipientEmails)
-        {
-            // Retrieve the event to be shared
-            var bookingToShare = _bookingRepository.GetById(bookingId);
-            if (bookingToShare != null)
-            {
-                // Customize the email subject and body for sharing
-                string subject = "Shared Event: " + bookingToShare.Date;
-                string body = $"Dear Recipient,\n\nYour tickets have been scheduled for {bookingToShare.Date}. Don't miss it!";
+        //public bool ShareEvent(int bookingId, List<string> recipientEmails)
+        //{
+        //    // Retrieve the event to be shared
+        //    var bookingToShare = _bookingRepository.GetById(bookingId);
+        //    if (bookingToShare != null)
+        //    {
+        //        // Customize the email subject and body for sharing
+        //        string subject = "Shared Event: " + bookingToShare.Date;
+        //        string body = $"Dear Recipient,\n\nYour tickets have been scheduled for {bookingToShare.Date}. Don't miss it!";
 
-                // Loop through recipient emails and send individual emails
-                foreach (var recipientEmail in recipientEmails)
-                {
-                    SendNotificationEmail(recipientEmail, subject, body);
-                }
+        //        // Loop through recipient emails and send individual emails
+        //        foreach (var recipientEmail in recipientEmails)
+        //        {
+        //            SendNotificationEmail(recipientEmail, subject, body);
+        //        }
 
-                return true; // Sharing successful
-            }
-            return false; // Booking not found
-        }
+        //        return true; // Sharing successful
+        //    }
+        //    return false; // Booking not found
+        //}
+
+
 
         // Method to get booked seats for a specific bus and date
         public BookedSeat BookedSeatsInTheBus(BookedSeatsDTO bookedSeatsDTO)
@@ -216,6 +218,8 @@ namespace BusTicketingWebApplication.Services
         public BookingIdDTO RemoveBooking(BookingIdDTO bookingIdDTO)
         {
             var BookingToBeRemoved = _bookingRepository.GetById(bookingIdDTO.Id);
+            //var CurrentBooking = _userRepository.GetById(BookingToBeRemoved.UserName);
+            //var CurrentEmail= _userRepository.GetById(BookingToBeRemoved.Email);
             if (BookingToBeRemoved != null)
             {
                 CancelledBooking cancelledBooking = new CancelledBooking();
@@ -223,6 +227,7 @@ namespace BusTicketingWebApplication.Services
                 cancelledBooking.UserName = BookingToBeRemoved.UserName;
                 cancelledBooking.BusId = BookingToBeRemoved.BusId;
                 cancelledBooking.Date = BookingToBeRemoved.Date;
+                cancelledBooking.Email = BookingToBeRemoved.Email;
                 cancelledBooking.CancelledSeats = BookingToBeRemoved.SelectedSeats;
                 cancelledBooking.TotalFare = BookingToBeRemoved.TotalFare;
                 cancelledBooking.CancelledDate = DateTime.Now;
@@ -255,12 +260,42 @@ namespace BusTicketingWebApplication.Services
                     //bookedBusSeats.BookedSeats.RemoveAll(seat => BookingToBeRemoved.SelectedSeats.Contains(seat));
 
                     // _bookedSeatRepository.Update(bookedBusSeats);
+                    CancelAndSendEmail(bookingIdDTO);
                     return bookingIdDTO;
+                    
                 }
             }
             return null;
         }
+        public void CancelAndSendEmail(BookingIdDTO booking)
+        {
+            // Your email sending logic here
+            string to = booking.Email;
+            string subject = "Bus Tickets Cancellation Email";
+            string body = ($"Dear {booking.UserName}, \n \nYour Bus Tickets are Cancelled!! \nPlease Visit Again!!");
 
+            // Send the email
+            SendNotificationEmail(to, subject, body);
+        }
+        public List<CancelledBooking> CancelledBookingsList(UserNameDTO userNameDTO)
+        {
+            var bookings = _cancelledBookingRepository.GetAll();
+            if (bookings != null)
+            {
+                List<CancelledBooking> CancelledBookingsList = new List<CancelledBooking>();
+                foreach (var booking in bookings)
+                {
+                    if (userNameDTO.UserName == booking.UserName)
+                    {
+                        CancelledBookingsList.Add(booking);
+                    }
+
+                }
+                if (CancelledBookingsList.Count > 0) return CancelledBookingsList;
+                else throw new NoCancelledBookingsException();
+            }
+            throw new NoBookingsAvailableException();
+        }
 
     }
 }

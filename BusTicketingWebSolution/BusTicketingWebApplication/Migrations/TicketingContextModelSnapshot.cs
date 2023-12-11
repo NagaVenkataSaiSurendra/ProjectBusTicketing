@@ -183,6 +183,10 @@ namespace BusTicketingWebApplication.Migrations
                     b.Property<string>("Date")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("TotalFare")
                         .HasColumnType("real");
 

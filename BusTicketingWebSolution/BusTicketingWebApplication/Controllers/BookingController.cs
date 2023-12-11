@@ -45,7 +45,6 @@ public class BookingController : Controller
         }
         return BadRequest(errorMessage);
     }
-
     // API endpoint to get all bookings (requires admin authorization)
     [Authorize(Roles = "Admin")]
     [HttpGet]
@@ -68,7 +67,7 @@ public class BookingController : Controller
     }
 
     // API endpoint to delete a booking (requires admin authorization)
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [Route("Cancel/DeleteBooking")]
     [HttpDelete]
     public ActionResult DeleteBooking(BookingIdDTO bookingIdDTO)
@@ -87,6 +86,26 @@ public class BookingController : Controller
             _logger.LogError("Booking cannot be Deleted!!");
         }
         return BadRequest(errorMessage);
+    }
+    [Route("CancelledBookings")]
+    [HttpPost]
+    public ActionResult CancelledBookings(UserNameDTO userNameDTO)
+    {
+        string errorMessage = string.Empty;
+        try
+        {
+            var result = _bookingService.CancelledBookingsList(userNameDTO);
+            _logger.LogInformation("Cancelled Bookings are listed!!");
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+
+            _logger.LogError("Cancelled bookings cannot be listed!!");
+        }
+        return BadRequest(errorMessage);
+
     }
 
     // API endpoint to get a list of booked seats for a specific bus

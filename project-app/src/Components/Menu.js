@@ -20,6 +20,9 @@ function Menu() {
             <li className="nav-item">
               <Link className="nav-link" to="/UserHistory">UserHistory</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Cancellation">Booking Cancellation</Link>
+            </li>
            
             
              <li className="nav-item">

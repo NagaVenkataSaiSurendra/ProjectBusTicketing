@@ -21,11 +21,13 @@ import UpdateBus from './Components/UpdateBus';
 import BusDetails from './Components/BusDetails';
 import AdminMenu from './Components/AdminMenu';
 import DashBoard from './Components/DashBoard';
+import { AuthProvider } from './Components/AuthContext';
+import CancelledBookings from './Components/CancelledBookings';
 
 function App() {
   return (
-
-    
+  
+    <AuthProvider>
     <BrowserRouter>
     <div>
       <DashBoard/>
@@ -37,8 +39,8 @@ function App() {
       <Route path="Users" element={<Protected><Users/></Protected>} />
       <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
       <Route path="Logout" element={<Logout/>}/>
-     
-        
+      <Route path="CancelledBookings" element={<Protected><CancelledBookings/></Protected>}/>
+       
         <Route path='/' element={<RegisterUser />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         
@@ -52,6 +54,7 @@ function App() {
       </Routes>
       </div>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 

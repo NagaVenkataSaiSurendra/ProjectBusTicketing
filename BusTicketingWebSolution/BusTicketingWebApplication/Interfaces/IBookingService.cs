@@ -10,5 +10,6 @@ namespace BusTicketingWebApplication.Interfaces
         BookingDTO Add(BookingDTO bookingDTO);
         BookingIdDTO RemoveBooking(BookingIdDTO bookingIdDTO);
         BookedSeat BookedSeatsInTheBus(BookedSeatsDTO bookedSeatsDTO);
+        List<CancelledBooking> CancelledBookingsList(UserNameDTO userNameDTO);
     }
 }

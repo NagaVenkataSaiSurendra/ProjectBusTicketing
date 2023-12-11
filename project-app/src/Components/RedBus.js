@@ -148,7 +148,7 @@ function RedBus() {
                   <th>From</th>
                   <th>To</th>
                   <th>Date</th>
-                  <th>Available Seats</th>
+                
                   <th>Fare</th>
                   <th>
                     <center>Book now</center>
@@ -164,7 +164,7 @@ function RedBus() {
                     <td>{bus.start}</td>
                     <td>{bus.end}</td>
                     <td>{selectedDate}</td>
-                    <td>{bus.availableSeats}</td>
+                    
                     <td>₹{bus.cost}/-</td>
                     <td>
                       <center>

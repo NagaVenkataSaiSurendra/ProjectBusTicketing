@@ -14,7 +14,6 @@
   font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
-  
 }
 
 .top-bar .nav-link:hover {
@@ -62,30 +61,10 @@
   margin: 0 auto;
   padding: 20px;
 }
+
 body {
-  background: 'C:\Users\SURENDRA\Downloads\bus.jpg';
-  background-size: cover; /* Ensure the image covers the entire viewport */
-  font-family: 'Arial', sans-serif; /* Change to your preferred font */
-}
-
-
-
-.first-nav, .second-nav {
-  display: none; /* Initially hide both navbars */
-}
-
-.first-nav.active {
-  display: block; /* Show first navbar with active class */
-}
-
-.first-nav a:active {
-  display: none; /* Hide first navbar on any link click */
-}
-
-.second-nav {
-  display: block; /* Always show second navbar */
-}
-
-.logged-out .first-nav, .logged-out .second-nav {
-  display: none; /* Hide both navbars on logout */
+  background-image: url('C:/Users/SURENDRA/Downloads/bus.jpg'); /* Corrected the path */
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  margin: 0; /* Added to remove default body margin */
 }

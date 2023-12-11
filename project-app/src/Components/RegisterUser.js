@@ -87,7 +87,7 @@ function RegisterUser(){
     
     return(
         <form className="registerForm">
-           <div className="form-group label-input-container">
+           <div className="label-input-container">
   <label htmlFor="username">Username</label>
   <input
     type="text"
@@ -98,27 +98,27 @@ function RegisterUser(){
   />
 </div>
            <label >{usernameError}</label>
-            <label className="form-control">Email</label>
+            <label className="label-input-container">Email</label>
             <input type="email" className="form-control" value={email}
                     onChange={(e)=>{setEmail(e.target.value)}}/>
             <label >{emailError}</label>
-             <label className="form-control">Phone</label>
+             <label className="label-input-container">Phone</label>
             <input type="text" className="form-control" value={phone}
                     onChange={(e)=>{setPhone(e.target.value)}}/>
             <label >{phoneError}</label>
-             <label className="form-control">City</label>
+             <label className="label-input-container">City</label>
             <input type="text" className="form-control" value={city}
                     onChange={(e)=>{setCity(e.target.value)}}/>
             <label >{cityError}</label>
-             <label className="form-control">Pincode</label>
+             <label className="label-input-container">Pincode</label>
             <input type="text" className="form-control" value={pincode}
                     onChange={(e)=>{setPincode(e.target.value)}}/>
             <label >{pincodeError}</label>
-            <label className="form-control">Password</label>
+            <label className="label-input-container">Password</label>
             <input type="password" className="form-control" value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}/>
             <label>{passwordError}</label>
-            <label className="form-control">Re-Type Password</label>
+            <label className="label-input-container">Re-Type Password</label>
             <input type="text" className="form-control" value={repassword}
                     onChange={(e)=>{setrePassword(e.target.value)}}/>
             <label>{repasswordError}</label>

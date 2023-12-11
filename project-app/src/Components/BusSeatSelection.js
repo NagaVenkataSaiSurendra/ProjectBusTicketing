@@ -18,15 +18,15 @@ const BusSeatSelection = () => {
   const cost=localStorage.getItem("cost");
 
   useEffect(() => {
-    fetch('http://localhost:5041/api/Booking/BookedSeatsList', {
+    fetch('http://localhost:5041/api/Booking/BookedSeats', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         id: thisBus, 
-        userName:thisUserName,
-        email:thisEmail
+        
+        date:thisDate
       }),
     })
       .then((response) => {
