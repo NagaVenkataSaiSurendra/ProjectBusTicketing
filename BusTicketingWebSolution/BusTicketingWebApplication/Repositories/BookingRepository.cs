@@ -81,5 +81,10 @@ namespace BusTicketingWebApplication.Repositories
 
             return null;  // Return null if booking not found
         }
+
+        public void SetSampleBooking(Booking sampleBooking)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

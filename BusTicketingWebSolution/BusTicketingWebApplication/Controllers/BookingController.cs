@@ -67,7 +67,7 @@ public class BookingController : Controller
     }
 
     // API endpoint to delete a booking (requires admin authorization)
-    [Authorize]
+   //[Authorize]
     [Route("Cancel/DeleteBooking")]
     [HttpDelete]
     public ActionResult DeleteBooking(BookingIdDTO bookingIdDTO)

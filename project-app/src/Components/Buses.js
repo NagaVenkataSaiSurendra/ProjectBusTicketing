@@ -50,8 +50,7 @@ function Buses() {
                   <th>BusId</th>
                   <th>Type</th>
                   <th>Cost</th>
-                  <th>Available Seats</th>
-                  <th>Booked Seats</th>
+                  
                   <th>Start</th>
                   <th>End</th>
                 </tr>
@@ -63,8 +62,7 @@ function Buses() {
                     <td>{bus.id}</td>
                     <td>{bus.type}</td>
                     <td>{bus.cost}</td>
-                    <td>{bus.availableSeats}</td>
-                    <td>{bus.bookedSeats}</td>
+                   
                     <td>{bus.start}</td>
                     <td>{bus.end}</td>
                   </tr>

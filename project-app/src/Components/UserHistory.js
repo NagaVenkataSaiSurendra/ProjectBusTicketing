@@ -4,6 +4,7 @@ import './UserHistory.css';
 
 function UserHistory() {
   const thisUserName = localStorage.getItem("thisUserName");
+  const thisEmail=localStorage.getItem("thisEmail");
   const [userNameError, setUserNameError] = useState("");
   const [searchError, setSearchError] = useState("");
   const [completedBookings, setCompletedBookings] = useState([]);
@@ -37,7 +38,7 @@ function UserHistory() {
     }
 
     axios
-      .post("http://localhost:5110/api/Customer/UserBookingHistory", {
+      .post("http://localhost:5041/api/Customer/UserBookingHistory", {
         userName: thisUserName,
       })
       .then((response) => {
@@ -61,8 +62,8 @@ function UserHistory() {
 
   const handleCancelBooking = (bookingId) => {
     axios
-    .delete("http://localhost:5110/api/Booking/CancelBooking", {
-      data: { id: bookingId }, // Use the data property to send the payload
+    .delete("http://localhost:5041/api/Booking/Cancel/DeleteBooking", {
+      data: { id: bookingId ,userName:thisUserName,email:thisEmail}, // Use the data property to send the payload
     })
     .then((response) => {
       // Handle the response as needed
@@ -148,3 +149,21 @@ function UserHistory() {
 }
 
 export default UserHistory;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

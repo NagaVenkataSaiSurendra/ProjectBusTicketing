@@ -24,7 +24,7 @@ function Users() {
         await setUserList(myData);
         await setSearchPerformed("true");
         var email=myData.email;
-        localStorage.setItem("email",email)
+        localStorage.setItem("email",email);
         var role=myData.role;
         localStorage.setItem('role',role);
     }

@@ -68,5 +68,10 @@ namespace BusTicketingWebApplication.Repositories
             }
             return null;
         }
+
+        public void SetSampleBus(Bus sampleBus)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

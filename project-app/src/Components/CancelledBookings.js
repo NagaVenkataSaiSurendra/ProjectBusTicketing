@@ -16,7 +16,7 @@ function CancelledBookings() {
             // 'Authorization': 'Bearer ' + localStorage.getItem("token")
           },
           body: JSON.stringify({
-            userName: "userName", // Use the variable here
+            userName: userName, // Use the variable here
           }),
         });
 
@@ -52,7 +52,7 @@ function CancelledBookings() {
                   <th>Date</th>
                   <th>TotalCost</th>
                   <th>Cancelled Date</th>
-                  <th>SelectedSeats</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -65,7 +65,7 @@ function CancelledBookings() {
                     <td>{booking.date}</td>
                     <td>{booking.totalFare}</td>
                     <td>{booking.cancelledDate}</td>
-                    <td>{booking.selectedSeats}</td>
+                    
                   </tr>
                 ))}
               </tbody>

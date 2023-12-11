@@ -24,7 +24,7 @@ const BusSeatSelection = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id: thisBus, 
+        busId: thisBus, 
         
         date:thisDate
       }),
@@ -37,7 +37,7 @@ const BusSeatSelection = () => {
       })
       .then((data) => {
         console.log('Server Response:', data);
-        setBookedSeats(data || []);
+        setBookedSeats(data.bookedSeats || []);
       })
       .catch((error) => console.error('Error fetching booked seats:', error));
   }, []);

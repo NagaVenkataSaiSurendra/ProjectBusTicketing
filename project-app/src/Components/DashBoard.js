@@ -1,24 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './DashBoard.css';
-import Menu from './Menu';
-import AdminMenu from './AdminMenu';
+import { styled } from '@mui/system';
+import Box from '@mui/material/Box';
+
+// Define a styled component using the styled utility
+const NavBar = styled(Box)({
+  backgroundColor: '#2196f3', // Set your desired background color
+  padding: '16px', // Adjust padding as needed
+  display: 'flex',
+  justifyContent: 'space-around',
+});
+
+const NavLink = styled(Link)({
+  color: 'white', // Set your desired text color
+  textDecoration: 'none',
+  fontSize: '16px', // Set your desired font size
+});
 
 function DashBoard() {
   return (
-    <div>
-      <div className="nav-bar">
-        {/* Display the navigation links without conditional rendering */}
-        <div className="nav-bar ">
-          <Link to="/Menu" className="nav-link">
-            User Menu
-          </Link>
-          <Link to="/AdminMenu" className="nav-link">
-            Admin Menu
-          </Link>
-        </div>
-      </div>
-    </div>
+    <Box>
+      <NavBar>
+        {/* Display the navigation links with Mui styling */}
+        <NavLink to="/Menu">User Menu</NavLink>
+        <NavLink to="/AdminMenu">Admin Menu</NavLink>
+      </NavBar>
+    </Box>
   );
 }
 

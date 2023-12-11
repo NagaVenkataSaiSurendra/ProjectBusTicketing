@@ -10,6 +10,6 @@
     "\\BusTicketingWebApplication\\Services",
     "\\EBusTicketingTest"
   ],
-  "SelectedNode": "\\EBusTicketingTest\\UserServiceTest.cs",
+  "SelectedNode": "\\BusTicketingWebApplication\\Services\\BookingService.cs",
   "PreviewInSolutionExplorer": false
 }

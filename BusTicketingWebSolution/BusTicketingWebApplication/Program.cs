@@ -97,7 +97,7 @@ namespace BusTicketingWebApplication
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IBusService, BusService>();
             builder.Services.AddScoped<IBookingService, BookingService>();
-            builder.Services.AddScoped<IBusRouteService, BusRouteService>();
+            
             builder.Services.AddScoped<IBookedSeatService, BookedSeatService>();
 
             // Build the application
