@@ -67,6 +67,7 @@ function UserHistory() {
     })
     .then((response) => {
       // Handle the response as needed
+      window.location.reload();
     })
     .catch((err) => {
       console.error(err);

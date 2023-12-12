@@ -23,10 +23,11 @@ import AdminMenu from './Components/AdminMenu';
 import DashBoard from './Components/DashBoard';
 import { AuthProvider } from './Components/AuthContext';
 import CancelledBookings from './Components/CancelledBookings';
+import TicketCard from './Components/TicketCard';
 
 function App() {
   return (
-  
+    
     <AuthProvider>
     <BrowserRouter>
     <div>
@@ -40,16 +41,16 @@ function App() {
       <Route path="BookingList" element={<Protected><BookingList /></Protected>} />
       <Route path="Logout" element={<Logout/>}/>
       <Route path="CancelledBookings" element={<Protected><CancelledBookings/></Protected>}/>
-       
+       <Route path="TicketCard" element={<TicketCard/>}/>
         <Route path='/' element={<RegisterUser />} />
         <Route path="/UserLogin" element={<UserLogin />} />
-        
+        <Route path='/Menu' element={<Menu/>}/>
         <Route path="BusSeatSelection" element={<Protected><BusSeatSelection /></Protected>} />
 
         <Route path="UserHistory" element={<Protected><UserHistory /></Protected>} />
         <Route path="RedBus" element={<RedBus />} />
         <Route path="AdminMenu" element={<Protected><AdminMenu /></Protected>} />
-        <Route path="Menu" element={<Protected><Menu /></Protected>} />
+        
         <Route path="Logout" element={<Logout/>}/>
       </Routes>
       </div>

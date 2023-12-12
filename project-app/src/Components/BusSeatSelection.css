@@ -1,5 +1,11 @@
+.comtainer-master {
+  display: flex;
+justify-content: center;
+}
+
 .seat-selection-container {
     border: 1px solid #422424;
+    width: 60%;
     padding: 20px;
     margin: 20px;
     border-radius: 8px;

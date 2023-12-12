@@ -61,6 +61,14 @@ function RedBus() {
       setSearchError('Please check your data');
       return;
     }
+    const selectedDateObject = new Date(selectedDate);
+    const currentDate = new Date();
+  
+    // Check if the selected date is less than today
+    if (selectedDateObject < currentDate) {
+      alert('Please enter a valid date (today or later).');
+      return ;
+    }
 
     axios
       .post('http://localhost:5041/api/Customer/BusSearch', {

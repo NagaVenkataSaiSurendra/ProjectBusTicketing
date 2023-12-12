@@ -11,6 +11,7 @@ function UserLogin(){
     const [thisCost, setThisCost] = useState(null);
     const [thisEmail,setThisEmail]=useState(null);
     var [usernameError,setUsernameError]=useState("");
+    
     var checkUSerData = ()=>{
         if(username=='')
         {
@@ -35,7 +36,8 @@ function UserLogin(){
         var checkData = checkUSerData();
         if(checkData==false)
         {
-            alert('please check yor data')
+            alert('please check yor data');
+            
             return;
         }
         
@@ -55,7 +57,9 @@ function UserLogin(){
         localStorage.setItem("cost",cost);
         var email=userData.data.email;
         localStorage.setItem("email",email);
-
+        var role=userData.data.role;
+        localStorage.setItem("role",role);
+        
         
         
     })

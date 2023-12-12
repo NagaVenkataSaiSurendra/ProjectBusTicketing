@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './BusSeatSelection.css';
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const BusSeatSelection = () => {
@@ -60,6 +61,7 @@ const BusSeatSelection = () => {
   };
 
   // Handle booking
+  const navigate = useNavigate();
   
 const handleBookClick = () => {
   // booking logic
@@ -94,8 +96,10 @@ const handleBookClick = () => {
 
       // You may want to reset the selected seats state or perform other actions here
       setSelectedSeats([]);
+     
       setIsBooked(true);
-      alert('Booking successfull.\nPlease check your Email!!');
+      navigate('/TicketCard');
+      
     })
     .catch((error) => console.error('Error booking seats:', error));
 };
@@ -106,6 +110,8 @@ const handleBookClick = () => {
   };
 
   return (
+    <div className="comtainer-master">
+    
     <div className="seat-selection-container">
       <h2>Bus Seat Selection</h2>
       <div>
@@ -159,6 +165,8 @@ const handleBookClick = () => {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 
