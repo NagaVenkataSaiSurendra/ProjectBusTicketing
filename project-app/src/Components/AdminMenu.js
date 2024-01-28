@@ -4,22 +4,17 @@ import home from './home.png';
 import bus from './bus.jpg';
 
 function AdminMenu() {
-  const role =localStorage.getItem("role");
   return (
-    
-    <div className="container">{role==="Admin" && <ul> 
+    <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarNav">
-       {role==="Admin" &&
-         
-            <ul><li className="nav-item">
+          <ul className="navbar-nav">
+            <li className="nav-item">
               <Link className="nav-link" to="/Buses">
                 <img src={bus} alt="bus" className="icon" />Buses
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/updateUser">UpdateUserDetails</Link>
-            </li>
+            
            
             <li className="nav-item">
               <Link className="nav-link" to="/Users">Users</Link>
@@ -37,14 +32,13 @@ function AdminMenu() {
               <Link className="nav-link" to="/Logout">Logout</Link>
             </li>
             
-          </ul>}
+          </ul>
         </div>
         <div className="ml-auto">
           <Link className="nav-link" to="/UserLogin">Login</Link>
         </div>
-      </nav> </ul>}
+      </nav>
     </div>
-   
   );
 }
 

@@ -35,7 +35,7 @@ function UpdateBus(){
         "driverRating":driverRating
         }
         
-        fetch('http://localhost:5041/api/bus/UpdateBus',{
+        fetch('http://localhost:5086/api/bus/UpdateBus',{
             method:'PUT',
             headers:{
                 'Accept':'application/json',

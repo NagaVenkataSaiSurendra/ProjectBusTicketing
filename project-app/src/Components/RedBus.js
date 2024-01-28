@@ -1,3 +1,5 @@
+
+
 import { useState } from 'react';
 import './RedBus.css'; // Import the CSS file
 import axios from 'axios';
@@ -71,7 +73,7 @@ function RedBus() {
     }
 
     axios
-      .post('http://localhost:5041/api/Customer/BusSearch', {
+      .post('http://localhost:5086/api/Customer/BusSearch', {
         start: fromLocation,
         end: toLocation,
         date: selectedDate,
@@ -90,6 +92,9 @@ function RedBus() {
 
   return (
     <div>
+      <center>
+      <h1>Search Your Bus</h1>
+      </center>
       {!searchPerformed && (
         <form className="redbus-search">
           <div className="location-container">
@@ -196,4 +201,3 @@ function RedBus() {
 }
 
 export default RedBus;
-

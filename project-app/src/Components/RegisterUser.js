@@ -1,3 +1,5 @@
+// RegisterUser.js
+
 import { useState } from "react";
 import './RegisterUser.css';
 import axios from "axios";
@@ -60,7 +62,7 @@ function RegisterUser() {
       return;
     }
 
-    axios.post("http://localhost:5041/api/Customer", {
+    axios.post("http://localhost:5086/api/Customer", {
       username: username,
       role: "User",
       password: password,
@@ -171,7 +173,3 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
-
-
-
-

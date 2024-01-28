@@ -6,8 +6,7 @@ import { useLocation } from 'react-router-dom';
 const BusSeatSelection = () => {
   const totalRows = 8;
   const seatsPerRow = 4;
-  const seatPrice =localStorage.getItem("thisCost"); // Set the price per seat
-  // State for selected seats and booked seats
+  const seatPrice =localStorage.getItem("thisCost");
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
@@ -19,7 +18,7 @@ const BusSeatSelection = () => {
   const cost=localStorage.getItem("cost");
 
   useEffect(() => {
-    fetch('http://localhost:5041/api/Booking/BookedSeats', {
+    fetch('http://localhost:5086/api/Booking/BookedSeats', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +65,7 @@ const BusSeatSelection = () => {
 const handleBookClick = () => {
   // booking logic
 
-  fetch('http://localhost:5041/api/Booking', {
+  fetch('http://localhost:5086/api/Booking', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

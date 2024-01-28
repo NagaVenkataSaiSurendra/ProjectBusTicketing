@@ -33,7 +33,7 @@ function AddBus(){
         "driverRating":driverRating
         }
         
-        fetch('http://localhost:5041/api/bus',{
+        fetch('http://localhost:5086/api/bus',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -56,6 +56,7 @@ function AddBus(){
 
     return(
         <div className="add">
+            
             <label className="form-control" for="pname"><b>Bus Type</b></label>
             <input id="pname" type="text" className="form-control" value={type} onChange={(e)=>{setType(e.target.value)}}/>
             <label className="form-control" for="pname"><b>Start</b></label>

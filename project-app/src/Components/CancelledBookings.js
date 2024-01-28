@@ -8,7 +8,7 @@ function CancelledBookings() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5041/api/Booking/cancelledbookings', {
+        const response = await fetch('http://localhost:5086/api/Booking/cancelledbookings', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

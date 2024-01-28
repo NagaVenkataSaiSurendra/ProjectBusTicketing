@@ -67,8 +67,8 @@ namespace EBusTicketingTest
             var busIdDTO = new BusIdDTO
             {
                 Id = 1,
-               
-            }
+
+            };
 
             // Act
             var result = _bookedSeatService.GetSeatsById(busIdDTO);

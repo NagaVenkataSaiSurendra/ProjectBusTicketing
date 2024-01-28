@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import './UserLogin.css'
+import AdminMenu from "./AdminMenu.js";import Menu from "./Menu.js";
+import { Route, useNavigate } from "react-router-dom";
 function UserLogin(){
     const roles =["User"];
     const [username,setUsername] = useState("");
@@ -21,7 +23,7 @@ function UserLogin(){
            
         if(password=='')
             return false;
-        if(username=="Admin-Vinay" || username=="Admin-Naga"){
+        if(username=="Krishna" || username=="Radha"){
                 role="Admin";
             }
         else{
@@ -31,6 +33,7 @@ function UserLogin(){
              
         return true;
     }
+    const navigate=useNavigate();
     const logIn = (event)=>{
         event.preventDefault();
         var checkData = checkUSerData();
@@ -40,14 +43,17 @@ function UserLogin(){
             
             return;
         }
-        
-        axios.post("http://localhost:5041/api/Customer/Login",{
+      
+        axios.post("http://localhost:5086/api/Customer/Login",{
             username: username,
             role:	role,
             password:password
+
+        
     })
     
     .then((userData)=>{
+        
         console.log(userData);
         alert("Successfully Logged In!!")
         localStorage.setItem('thisUserName', username);
@@ -59,8 +65,7 @@ function UserLogin(){
         localStorage.setItem("email",email);
         var role=userData.data.role;
         localStorage.setItem("role",role);
-        
-        
+        navigate('/Home');
         
     })
     .catch((err)=>{
@@ -68,6 +73,8 @@ function UserLogin(){
     })
 }
 return(
+   
+    
             <form className="loginForm">
 
             <label className="form-control">Username</label>
@@ -85,7 +92,7 @@ return(
             
             <button className="btn btn-danger button">Cancel</button>
             <div class="container signin">
-    <p>New User? Register Here <a href="/">Register</a>.</p>
+    <p>New User? Register Here <a href="/Registeruser">Register</a>.</p>
   </div>
         </form>
     );

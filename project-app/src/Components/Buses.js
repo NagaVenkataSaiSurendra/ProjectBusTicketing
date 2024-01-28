@@ -10,7 +10,7 @@ function Buses() {
   }, []); // Empty dependency array ensures this effect runs once when mounted
 
   var getBuses = () => {
-    fetch("http://localhost:5041/api/bus", {
+    fetch("http://localhost:5086/api/bus", {
       method: "GET",
       headers: {
         Accept: "application/json",

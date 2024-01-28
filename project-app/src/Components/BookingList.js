@@ -15,7 +15,7 @@ function BookingList() {
   }, []); 
 
   const getBookings = () => {
-    fetch('http://localhost:5041/api/booking', {
+    fetch('http://localhost:5086/api/booking', {
       method: "GET",
       headers: {
         'Accept': 'application/json',

@@ -11,7 +11,7 @@ function Users() {
   var getUsers = () => {
     
     
-       fetch('http://localhost:5041/api/Customer/GetAllUsers', {
+       fetch('http://localhost:5086/api/Customer/GetAllUsers', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

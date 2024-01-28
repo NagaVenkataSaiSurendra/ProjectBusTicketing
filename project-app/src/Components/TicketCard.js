@@ -45,6 +45,7 @@ const TicketCard = () => {
   };
 
   return (
+    <center>
     <div className="container">
       <h1>Select Payment Method</h1>
       <div>
@@ -105,6 +106,7 @@ const TicketCard = () => {
         Submit Payment
       </button>
     </div>
+    </center>
   );
 };
 

@@ -36,7 +36,7 @@ function UpdateUser() {
     }
 
     axios
-      .put('http://localhost:5041/api/Customer/UserProfiles', {
+      .put('http://localhost:5086/api/Customer/UserProfiles', {
         userName: userName,
         email: email,
         phone: phone,

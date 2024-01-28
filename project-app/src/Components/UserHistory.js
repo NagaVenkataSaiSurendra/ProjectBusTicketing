@@ -38,7 +38,7 @@ function UserHistory() {
     }
 
     axios
-      .post("http://localhost:5041/api/Customer/UserBookingHistory", {
+      .post("http://localhost:5086/api/Customer/UserBookingHistory", {
         userName: thisUserName,
       })
       .then((response) => {
@@ -62,11 +62,10 @@ function UserHistory() {
 
   const handleCancelBooking = (bookingId) => {
     axios
-    .delete("http://localhost:5041/api/Booking/Cancel/DeleteBooking", {
+    .delete("http://localhost:5086/api/Booking/Cancel/DeleteBooking", {
       data: { id: bookingId ,userName:thisUserName,email:thisEmail}, // Use the data property to send the payload
     })
     .then((response) => {
-      // Handle the response as needed
       window.location.reload();
     })
     .catch((err) => {
@@ -89,11 +88,13 @@ function UserHistory() {
           <div>
             <br />
             <button className="btn-success" onClick={toggleBookings}>
-              {showUpcoming ? "Show Completed Bookings" : "Show Upcoming Bookings"}
+              {showUpcoming ? "Show Past Bookings" : "Show Current Bookings"}
             </button>
             <br />
-            <h2>{showUpcoming ? "Upcoming" : "Completed"} Bookings</h2>
             <br />
+            <h2>{showUpcoming ? "Current" : "Past"} Bookings</h2>
+            
+            
             <table className="table">
               {/* Render bookings based on the showUpcoming state */}
               <thead>
