@@ -25470,3 +25470,7 @@ FROM [Users] AS [u]
 SELECT [u].[UserName], [u].[City], [u].[Email], [u].[Key], [u].[Password], [u].[Phone], [u].[Pincode], [u].[Role]
 FROM [Users] AS [u]
 2024-01-28 14:17:39,444 [.NET ThreadPool Worker] INFO BusTicketingWebApplication.Controllers.CustomerController.GetAllUsers[118] - Users listed
+2024-01-30 17:02:52,640 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5086
+2024-01-30 17:02:52,924 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2024-01-30 17:02:52,942 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2024-01-30 17:02:52,946 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: C:\Users\2000112402\ProjectBusTicketing\BusTicketingWebSolution\BusTicketingWebApplication\

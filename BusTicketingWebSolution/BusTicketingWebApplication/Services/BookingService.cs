@@ -260,14 +260,14 @@ namespace BusTicketingWebApplication.Services
                     //bookedBusSeats.BookedSeats.RemoveAll(seat => BookingToBeRemoved.SelectedSeats.Contains(seat));
 
                     // _bookedSeatRepository.Update(bookedBusSeats);
-                    CancelAndSendEmail(bookingIdDTO);
+                    CancelAndSendEmail(cancelledBooking);
                     return bookingIdDTO;
                     
                 }
             }
             return null;
         }
-        public void CancelAndSendEmail(BookingIdDTO booking)
+        public void CancelAndSendEmail(CancelledBooking booking)
         {
             // Your email sending logic here
             string to = booking.Email;

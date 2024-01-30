@@ -8,7 +8,7 @@ function Menu() {
     const role = localStorage.getItem("role");
     const logout = () => {
       localStorage.clear();
-      navigate('/UserLogin');
+      navigate('/');
       window.location.reload();
     };
   
