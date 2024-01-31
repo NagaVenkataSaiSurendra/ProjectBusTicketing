@@ -1,38 +1,39 @@
-.registerForm {
-  max-width: 500px;
-  margin: auto;
+/* RegisterUser.css */
+
+.register-container {
+  max-width: 400px;
+  margin: 0px auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; /* Set background color to white */
+}
+
+.register-heading {
+  text-align: center;
+  color: #333;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
 }
 
 .label-input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.label-input-container label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 16px;
+  margin-bottom: 0px; 
 }
 
 .form-control {
-  width: 100%;
-  padding: 10px;
+  width: calc(100% - 16px); 
+  padding: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-bottom: 10px;
 }
 
-.error-message {
-  color: #dc3545;
-  margin-top: 5px;
+label {
+  color: red;
+  font-size: 12px;
 }
 
 .button-container {
@@ -41,26 +42,6 @@
 }
 
 .button {
-  flex: 1;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.button:hover {
-  filter: brightness(90%);
+  width: 48%;
 }

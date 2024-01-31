@@ -92,11 +92,12 @@ function RedBus() {
 
   return (
     <div>
+      
       <center>
-      <h1>Search Your Bus</h1>
       </center>
       {!searchPerformed && (
         <form className="redbus-search">
+      <h1>Search Your Bus</h1>
           <div className="location-container">
             <div className="location-input from">
               <img src={fromIcon} alt="From Icon" className="icon" />

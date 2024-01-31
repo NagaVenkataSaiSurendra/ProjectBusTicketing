@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './TicketCardModule.css';
 import cardImage from './cardImage.jpg';
 import upiImage from './upiImage.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const TicketCard = () => {
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -9,9 +10,12 @@ const TicketCard = () => {
   const thisBus = localStorage.getItem('thisBus');
   const thisDate = localStorage.getItem('thisDate');
   const thisUserName = localStorage.getItem('thisUserName');
+  const nav=useNavigate();
+    
 
   const handlePaymentMethodChange = (method) => {
     setPaymentMethod(method);
+    
   };
 
   const handlePaymentSubmit = () => {
@@ -40,6 +44,7 @@ const TicketCard = () => {
       // .then((data) => {
       //   console.log('Booking response from server:', data);
          alert('Booking successful.\nPlease check your Email!!');
+         nav('/RedBus');
       // })
       // .catch((error) => console.error('Error booking seats:', error));
   };

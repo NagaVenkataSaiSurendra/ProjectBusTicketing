@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './UpdateUser.css';
@@ -19,7 +20,6 @@ function UpdateUser() {
       setStartError('User name cannot be empty');
       return false;
     }
-
     return true;
   };
 
@@ -56,61 +56,52 @@ function UpdateUser() {
   };
 
   return (
-    <form className="update">
-      <label className="form-control">Username</label>
+    <form className="update-form">
+      <h2>Update User</h2>
+      <label className="form-label">Username</label>
       <input
         type="text"
-        className="form-control"
+        className="form-input"
         value={userName}
-        onChange={(e) => {
-          setUserName(e.target.value);
-        }}
+        onChange={(e) => setUserName(e.target.value)}
       />
 
-      <label className="form-control">Email</label>
+      <label className="form-label">Email</label>
       <input
         type="text"
-        className="form-control"
+        className="form-input"
         value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={(e) => setEmail(e.target.value)}
       />
-      <label className="form-control">Phone Number</label>
+      <label className="form-label">Phone Number</label>
       <input
         type="text"
-        className="form-control"
+        className="form-input"
         value={phone}
-        onChange={(e) => {
-          setPhone(e.target.value);
-        }}
+        onChange={(e) => setPhone(e.target.value)}
       />
-      <label className="form-control">City</label>
+      <label className="form-label">City</label>
       <input
         type="text"
-        className="form-control"
+        className="form-input"
         value={city}
-        onChange={(e) => {
-          setCity(e.target.value);
-        }}
+        onChange={(e) => setCity(e.target.value)}
       />
-      <label className="form-control">Pincode</label>
+      <label className="form-label">Pincode</label>
       <input
         type="text"
-        className="form-control"
+        className="form-input"
         value={pincode}
-        onChange={(e) => {
-          setPincode(e.target.value);
-        }}
+        onChange={(e) => setPincode(e.target.value)}
       />
 
       <br />
       {searchError && <p className="error-message">{searchError}</p>}
 
-      <button className="btn btn-primary button" onClick={handleSearch}>
+      <button className="btn btn-primary update-button" onClick={handleSearch}>
         Update Details
       </button>
-      <button className="btn btn-danger button" onClick={() => alert('Cancelled')}>
+      <button className="btn btn-danger cancel-button" onClick={() => alert('Cancelled')}>
         Cancel
       </button>
     </form>
@@ -118,3 +109,5 @@ function UpdateUser() {
 }
 
 export default UpdateUser;
+
+
