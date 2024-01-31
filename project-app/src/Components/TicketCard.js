@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './TicketCardModule.css';
+import './TicketCardModule.css'; // Import your updated CSS file
 import cardImage from './cardImage.jpg';
 import upiImage from './upiImage.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -10,107 +10,139 @@ const TicketCard = () => {
   const thisBus = localStorage.getItem('thisBus');
   const thisDate = localStorage.getItem('thisDate');
   const thisUserName = localStorage.getItem('thisUserName');
-  const nav=useNavigate();
-    
+  const [upi, setupi] = useState("");
+  const [upiError, setUpiError] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardNumberError, setCardNumberError] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [cardHolderError, setCardHolderError] = useState("");
+  const [expiration, setExpiration] = useState("");
+  const [expirationError, setExpirationError] = useState("");
+  const nav = useNavigate();
 
   const handlePaymentMethodChange = (method) => {
     setPaymentMethod(method);
-    
   };
 
-  const handlePaymentSubmit = () => {
-    // fetch('http://localhost:5041/api/Booking', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //     // 'Authorization': 'Bearer ' + localStorage.getItem("token")
-    //   },
-    //   body: JSON.stringify({
-    //     busId: thisBus,
-    //     userName: thisUserName,
-    //     selectedSeats: localStorage.getItem('selectedSeats'),
-    //     date: thisDate,
-    //     email: thisEmail,
-    //     paymentMethod: paymentMethod, // Use the selected payment method directly
-      //}),
-   // })
-      // .then((response) => {
-      //   if (!response.ok) {
-      //     throw new Error(`HTTP error! Status: ${response.status}/-`);
-      //   }
-      //   return response.json();
-      // })
-      // .then((data) => {
-      //   console.log('Booking response from server:', data);
-         alert('Booking successful.\nPlease check your Email!!');
-         nav('/RedBus');
-      // })
-      // .catch((error) => console.error('Error booking seats:', error));
+  const checkPaymentData = () => {
+    if (paymentMethod === 'card') {
+      if (cardNumber === "") {
+        setCardNumberError("Card Number cannot be Empty!!");
+        return false;
+      }
+      if (expiration === "") {
+        setExpirationError("Please Enter this data!!");
+        return false;
+      }
+      if (cardHolder === "") {
+        setCardHolderError("Card Holder Name should Not be Empty!!");
+        return false;
+      }
+    } else if (paymentMethod === 'upi') {
+      if (upi === "") {
+        setUpiError("UPI value cannot be empty!!");
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const handlePaymentSubmit = (event) => {
+    event.preventDefault();
+    var data = checkPaymentData();
+    if (data === false) {
+      alert("Please Check Your Data");
+      return;
+    }
+
+    // Additional logic for payment submission goes here
+
+    // For example, you can navigate to a new page after successful payment
+    alert("Payment Successful!!\n Please Check your Email!!");
+    nav('/RedBus');
   };
 
   return (
     <center>
-    <div className="container">
-      <h1>Select Payment Method</h1>
-      <div>
-        <label className="radioLabel">
-          <input
-            type="radio"
-            name="paymentMethod"
-            value="card"
-            onChange={() => handlePaymentMethodChange('card')}
-          />
-          Card <img src={cardImage} alt="Card" className="paymentIcon" />
-        </label>
-        <label className="radioLabel">
-          <input
-            type="radio"
-            name="paymentMethod"
-            value="upi"
-            onChange={() => handlePaymentMethodChange('upi')}
-          />
-          UPI <img src={upiImage} alt="UPI" className="paymentIcon" />
-        </label>
-      </div>
-      {paymentMethod === 'card' && (
-        <div>
-          <h2>Enter Card Details</h2>
-          <div className="cardDetailsContainer">
+      <div className="ticketCardContainer">
+        <h1>Select Payment Method</h1>
+        <div className="paymentMethodContainer">
+          <label className="paymentMethodLabel">
             <input
-              type="text"
-              placeholder="Card Number"
-              className="textInput cardNumber"
+              type="radio"
+              name="paymentMethod"
+              value="card"
+              onChange={() => handlePaymentMethodChange('card')}
+              className="paymentMethodInput"
             />
-            <div className="secondLine">
+            Card <img src={cardImage} alt="Card" className="paymentIcon" />
+          </label>
+          <label className="paymentMethodLabel">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="upi"
+              onChange={() => handlePaymentMethodChange('upi')}
+              className="paymentMethodInput"
+            />
+            UPI <img src={upiImage} alt="UPI" className="paymentIcon" />
+          </label>
+        </div>
+        {paymentMethod === 'card' && (
+          <div>
+            <h2>Enter Card Details</h2>
+            <div className="cardDetailsContainer">
               <input
                 type="text"
-                placeholder="Cardholder Name"
-                className="textInput wideInput"
+                placeholder="Card Number"
+                className="textInput cardNumber"
+                value={cardNumber}
+                onChange={(e) => {
+                  setCardNumber(e.target.value);
+                }}
               />
-              <input
-                type="text"
-                placeholder="Expiration Date (MM/YYYY)"
-                className="textInput narrowInput"
-              />
+              <label className="errorLabel">{cardNumberError}</label>
+              <div className="secondLine">
+                <input
+                  type="text"
+                  placeholder="Cardholder Name"
+                  className="textInput wideInput"
+                  value={cardHolder}
+                  onChange={(e) => {
+                    setCardHolder(e.target.value);
+                  }}
+                /><label className="errorLabel">{cardHolderError}</label>
+                <input
+                  type="text"
+                  placeholder="Expiration Date (MM/YYYY)"
+                  className="textInput narrowInput" onChange={(e) => {
+                    setExpiration(e.target.value);
+                  }}
+                /><label className="errorLabel">{expirationError}</label>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {paymentMethod === 'upi' && (
-        <div>
-          <h2>Enter UPI ID</h2>
-          <input
-            type="text"
-            placeholder="UPI ID"
-            className="textInput"
-          />
-        </div>
-      )}
-      <button onClick={handlePaymentSubmit} className="submitButton">
-        Submit Payment
-      </button>
-    </div>
+        )}
+        {paymentMethod === 'upi' && (
+          <div>
+            <h2>Enter UPI ID</h2>
+            <input
+              type="text"
+              placeholder="UPI ID"
+              className="textInput"
+              value={upi}
+              onChange={(e) => {
+                setupi(e.target.value);
+              }}
+            />
+            <label className="errorLabel">{upiError}</label>
+          </div>
+        )}
+        <button onClick={handlePaymentSubmit} className="submitButton">
+          Submit Payment
+        </button>
+      </div>
     </center>
   );
 };
