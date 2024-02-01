@@ -97,7 +97,7 @@ function UserLogin() {
             Login
           </button>
 
-          <button className="btn-danger button">Cancel</button>
+          <a className="btn-danger button" href="/RedBus">Cancel</a>
         </div>
 
         <div className="signin-container">

@@ -17,6 +17,9 @@ function RedBus() {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [thisBus, setThisBus] = useState(null);
   const [thisDate, setThisDate] = useState(null);
+  const [type, setType] = useState(null);
+  const [startTime, setStarttime] = useState(null);
+
   
 
   const checkUserData = () => {
@@ -36,19 +39,18 @@ function RedBus() {
 
   const navigate = useNavigate();
 
-  const handleBook = (id, selectedDate,cost) => {
+  const handleBook = (id, selectedDate, cost,type,startTime) => {
     setThisBus(id);
     setThisDate(selectedDate);
-    
-    console.log(thisBus,thisDate);
-    localStorage.setItem("cost",cost);
+  
+    localStorage.setItem('cost', cost);
     localStorage.setItem('thisBus', id);
-    localStorage.setItem('thisDate', selectedDate,cost);
-    
+    localStorage.setItem('thisDate', selectedDate);
+    localStorage.setItem('type', type);
+    localStorage.setItem('startTime', startTime);
 
-    // Additional logic for booking if needed
-    // ...
-    // Navigate to the component where you can select seats
+  
+    
     navigate('/BusSeatSelection');
   };
 
@@ -65,13 +67,17 @@ function RedBus() {
     }
     const selectedDateObject = new Date(selectedDate);
     const currentDate = new Date();
-  
-    // Check if the selected date is less than today
-    if (selectedDateObject < currentDate) {
-      alert('Please enter a valid date (today or later).');
-      return ;
-    }
+    localStorage.setItem('toLocation', toLocation);
+    localStorage.setItem('fromLocation', fromLocation);
 
+
+    var yesterday = new Date(currentDate);
+    yesterday.setDate(currentDate.getDate() - 1);
+    
+    if (selectedDateObject < yesterday) {
+      alert('Please enter a valid date (today or later).');
+      return;
+    }
     axios
       .post('http://localhost:5086/api/Customer/BusSearch', {
         start: fromLocation,
@@ -92,12 +98,11 @@ function RedBus() {
 
   return (
     <div>
-      
       <center>
+      <h1>Search Your Bus</h1>
       </center>
       {!searchPerformed && (
         <form className="redbus-search">
-      <h1>Search Your Bus</h1>
           <div className="location-container">
             <div className="location-input from">
               <img src={fromIcon} alt="From Icon" className="icon" />
@@ -129,7 +134,7 @@ function RedBus() {
                 value={toLocation}
                 onChange={(e) => setToLocation(e.target.value)}
               />
-            </div>
+            </div> 
           </div>
           <div className="date-container">
             <div className="calendar-icon">
@@ -184,7 +189,7 @@ function RedBus() {
                       <center>
                         <button
                           className="book-button"
-                          onClick={() => handleBook(bus.id, selectedDate,bus.cost)}
+                          onClick={() => handleBook(bus.id, selectedDate,bus.cost,bus.type,bus.startTime)}
                         >
                           Book
                         </button>

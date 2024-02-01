@@ -4,7 +4,8 @@ import axios from 'axios';
 import './UpdateUser.css';
 
 function UpdateUser() {
-  const [userName, setUserName] = useState('');
+ // const [userName, setUserName] = useState('');
+  const userName=localStorage.getItem('thisUserName');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
@@ -16,10 +17,10 @@ function UpdateUser() {
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   const checkUpdateUser = () => {
-    if (userName === '') {
-      setStartError('User name cannot be empty');
-      return false;
-    }
+    // if (userName === '') {
+    //   setStartError('User name cannot be empty');
+    //   return false;
+    // }
     return true;
   };
 
@@ -37,7 +38,7 @@ function UpdateUser() {
 
     axios
       .put('http://localhost:5086/api/Customer/UserProfiles', {
-        userName: userName,
+         userName: userName,
         email: email,
         phone: phone,
         city: city,
@@ -58,13 +59,14 @@ function UpdateUser() {
   return (
     <form className="update-form">
       <h2>Update User</h2>
-      <label className="form-label">Username</label>
-      <input
+     <h1><b><label className="form-label"><h4>Hii,{userName}</h4></label></b></h1>
+      {/* <input
         type="text"
         className="form-input"
         value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
+        placeholder={userName}
+        // onChange={(e) => setUserName(e.target.value)}
+      /> */}
 
       <label className="form-label">Email</label>
       <input

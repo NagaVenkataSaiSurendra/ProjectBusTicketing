@@ -26,8 +26,8 @@ const TicketCard = () => {
 
   const checkPaymentData = () => {
     if (paymentMethod === 'card') {
-      if (cardNumber === "") {
-        setCardNumberError("Card Number cannot be Empty!!");
+      if (cardNumber === "" && cardNumber.length!=11) {
+        setCardNumberError("Check your Card Number!!");
         return false;
       }
       if (expiration === "") {
