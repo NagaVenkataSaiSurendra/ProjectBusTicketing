@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// UserLogin.js
+>>>>>>> origin
 
 import React, { useState } from "react";
 import axios from "axios";
@@ -36,7 +40,10 @@ function UserLogin() {
       alert("Please check your data");
       return;
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin
 
     axios
       .post("http://localhost:5086/api/Customer/Login", {
@@ -59,7 +66,11 @@ function UserLogin() {
 
         // if (userRole === "Admin") navigate('/AdminMenu');
         // else navigate('/MainMenu');
+<<<<<<< HEAD
         navigate('/Home');
+=======
+        navigate('/Redbus');
+>>>>>>> origin
       })
       .catch((err) => {
         console.log(err);
@@ -88,7 +99,10 @@ function UserLogin() {
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
+<<<<<<< HEAD
             
+=======
+>>>>>>> origin
           }}
         />
 
@@ -97,7 +111,11 @@ function UserLogin() {
             Login
           </button>
 
+<<<<<<< HEAD
           <a className="btn-danger button" href="/RedBus">Cancel</a>
+=======
+          <button className="btn-danger button">Cancel</button>
+>>>>>>> origin
         </div>
 
         <div className="signin-container">
