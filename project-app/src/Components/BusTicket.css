@@ -1,0 +1,36 @@
+/* Import Bootstrap styles */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Your custom styles for BusTicket component using Material-UI */
+#ticket-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-header h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ticket-download button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ticket-download button:hover {
+  background-color: #0056b3;
+}

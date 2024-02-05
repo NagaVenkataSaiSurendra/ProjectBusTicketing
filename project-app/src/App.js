@@ -23,6 +23,7 @@ import AdminMenu from './Components/AdminMenu';
 import { AuthProvider } from './Components/AuthContext';
 import CancelledBookings from './Components/CancelledBookings';
 import TicketCard from './Components/TicketCard.js';
+import BusTicket from './Components/BusTicket';
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
         <Route path="Menu" element={<Protected><Menu /></Protected>} />
         <Route path="Logout" element={<Logout/>}/>
         <Route path="TicketCard" element={<TicketCard/>}/>
-
+         <Route path="BusTicket" element={<BusTicket/>}/>
         
       </Routes>
       </div>

@@ -60,7 +60,7 @@ const TicketCard = () => {
 
     // For example, you can navigate to a new page after successful payment
     alert("Payment Successful!!\n Please Check your Email!!");
-    nav('/RedBus');
+    nav('/BusTicket');
   };
 
   return (
